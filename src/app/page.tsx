@@ -1,65 +1,97 @@
-import Image from "next/image";
+'use client'
+import { useState, useEffect } from 'react'
+
+// Deterministic star positions — static so server and client always agree
+const STARS = Array.from({ length: 40 }, (_, i) => ({
+  top: ((i * 73 + 17) % 97) / 97 * 100,
+  left: ((i * 53 + 29) % 89) / 89 * 100,
+}))
+import Sidebar from '../components/Sidebar'
+import TaskChecklist from '../components/TaskCheckList'
+import GymTracker from '../components/GymTracker'
+import WeeklyFocus from '../components/WeeklyFocus'
+import Reflections from '../components/Reflections'
+import GoalsKanban from '@/components/GoalsKanban/GoalsKanban'
+import HabitTracker from '@/components/HabitTracker'
+
+function getGreeting() {
+  const hour = new Date().getHours()
+  if (hour < 12) return 'Good morning'
+  if (hour < 18) return 'Good afternoon'
+  return 'Good evening'
+}
 
 export default function Home() {
+  const [activeTab, setActiveTab] = useState('Week')
+  const [dateStr, setDateStr] = useState('')
+
+  useEffect(() => {
+    setDateStr(new Date().toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }))
+  }, [])
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="flex min-h-screen">
+      <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />
+      
+      {/* Main content */}
+      <main className="ml-56 flex-1 min-h-screen">
+
+        {/* Banner */}
+        <div className="relative h-48 bg-gradient-to-br from-indigo-900 via-purple-900 to-gray-900 overflow-hidden">
+          {/* Star dots */}
+          <div className="absolute inset-0">
+            {STARS.map((pos, i) => (
+              <div
+                key={i}
+                className="absolute w-0.5 h-0.5 bg-white rounded-full opacity-60"
+                style={{ top: `${pos.top}%`, left: `${pos.left}%` }}
+              />
+            ))}
+          </div>
+          
+          {/* Greeting */}
+          <div className="relative z-10 h-full flex flex-col justify-center px-10">
+            <h2 className="text-3xl font-bold text-white">
+              {getGreeting()}, Emmanuel ✦
+            </h2>
+            <p className="text-indigo-300 mt-2 text-sm">{dateStr}</p>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Content */}
+        <div className="p-8">
+          {activeTab === 'Week' && (
+            <div className="grid grid-cols-3 gap-6">
+              <div className="col-span-3">
+                <TaskChecklist />
+              </div>
+              <div className="col-span-3">
+                <GymTracker />
+              </div>
+              <div className="col-span-2">
+                <WeeklyFocus />
+              </div>
+              <div className="col-span-1">
+                <Reflections />
+              </div>
+              <div>
+                <GoalsKanban />
+              </div>
+              <div>
+                <HabitTracker />
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'Quarter' && (
+            <div className="text-gray-400">Quarter view coming soon</div>
+          )}
+
+          {activeTab === 'Year' && (
+            <div className="text-gray-400">Year view coming soon</div>
+          )}
         </div>
       </main>
     </div>
-  );
+  )
 }
