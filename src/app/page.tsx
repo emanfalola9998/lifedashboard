@@ -1,95 +1,131 @@
 'use client'
-import { useState, useEffect } from 'react'
-
-// Deterministic star positions — static so server and client always agree
-const STARS = Array.from({ length: 40 }, (_, i) => ({
-  top: ((i * 73 + 17) % 97) / 97 * 100,
-  left: ((i * 53 + 29) % 89) / 89 * 100,
-}))
+import { useEffect, useState } from 'react'
+import { useSession, signIn } from 'next-auth/react'
 import Sidebar from '../components/Sidebar'
-import TaskChecklist from '../components/TaskCheckList'
-import GymTracker from '../components/GymTracker'
-import WeeklyFocus from '../components/WeeklyFocus'
 import Reflections from '../components/Reflections'
 import GoalsKanban from '@/components/GoalsKanban/GoalsKanban'
 import HabitTracker from '@/components/HabitTracker'
+import ReadingList from '@/components/ReadingList'
+import CountdownTimer from '@/components/CountdownTimer'
+import DashboardOverview from '@/components/DashboardOverview'
+import WeeklySchedule from '@/components/WeeklySchedule'
+import PomodoroTimer from '@/components/PomodoroTimer'
+import DailyIntention from '@/components/DailyIntention'
+import GoogleCalendar from '@/components/GoogleCalendar'
 
 function getGreeting() {
-  const hour = new Date().getHours()
-  if (hour < 12) return 'Good morning'
-  if (hour < 18) return 'Good afternoon'
-  return 'Good evening'
+  const h = new Date().getHours()
+  return h < 12 ? 'Good morning' : h < 18 ? 'Good afternoon' : 'Good evening'
+}
+
+function Section({ label, emoji, children }: { label: string; emoji: string; children: React.ReactNode }) {
+  return (
+    <div className="mb-9">
+      <div className="flex items-center gap-2 mb-4 pb-3 border-b border-[var(--border)]">
+        <span className="text-[15px]">{emoji}</span>
+        <span className="text-[13px] font-bold text-[var(--text)] tracking-[-0.1px]">{label}</span>
+      </div>
+      {children}
+    </div>
+  )
+}
+
+function SignInPage() {
+  return (
+    <div className="min-h-screen bg-[var(--bg)] flex items-center justify-center">
+      <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl px-10 py-12 w-full max-w-sm text-center">
+        <div
+          className="w-12 h-12 rounded-xl flex items-center justify-center text-xl font-bold text-white mx-auto mb-6"
+          style={{ background: 'linear-gradient(135deg, #818cf8, #a78bfa)' }}
+        >L</div>
+        <div className="text-[18px] font-bold text-[var(--text)] mb-1">Life Dashboard</div>
+        <div className="text-[13px] text-[var(--text-3)] mb-8">Your personal productivity hub</div>
+        <button
+          onClick={() => signIn('google')}
+          className="w-full flex items-center justify-center gap-3 px-5 py-3 rounded-xl text-[13px] font-semibold cursor-pointer transition-all duration-150"
+          style={{ background: 'rgba(91,110,248,0.1)', color: 'var(--accent)', border: '1px solid rgba(91,110,248,0.2)' }}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.545 10.239v3.821h5.445c-.712 2.315-2.647 3.972-5.445 3.972a6.033 6.033 0 110-12.064c1.498 0 2.866.549 3.921 1.453l2.814-2.814A9.969 9.969 0 0012.545 2C7.021 2 2.543 6.477 2.543 12s4.478 10 10.002 10c8.396 0 10.249-7.85 9.426-11.748l-9.426-.013z"/>
+          </svg>
+          Sign in with Google
+        </button>
+      </div>
+    </div>
+  )
 }
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState('Week')
+  const { data: session, status } = useSession()
   const [dateStr, setDateStr] = useState('')
 
   useEffect(() => {
     setDateStr(new Date().toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }))
   }, [])
 
-  return (
-    <div className="flex min-h-screen">
-      <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />
-      
-      {/* Main content */}
-      <main className="ml-56 flex-1 min-h-screen">
+  if (status === 'loading') {
+    return (
+      <div className="min-h-screen bg-[var(--bg)] flex items-center justify-center">
+        <div className="text-[13px] text-[var(--text-3)]">Loading...</div>
+      </div>
+    )
+  }
 
-        {/* Banner */}
-        <div className="relative h-48 bg-gradient-to-br from-indigo-900 via-purple-900 to-gray-900 overflow-hidden">
-          {/* Star dots */}
-          <div className="absolute inset-0">
-            {STARS.map((pos, i) => (
-              <div
-                key={i}
-                className="absolute w-0.5 h-0.5 bg-white rounded-full opacity-60"
-                style={{ top: `${pos.top}%`, left: `${pos.left}%` }}
-              />
-            ))}
-          </div>
-          
-          {/* Greeting */}
-          <div className="relative z-10 h-full flex flex-col justify-center px-10">
-            <h2 className="text-3xl font-bold text-white">
-              {getGreeting()}, Emmanuel ✦
-            </h2>
-            <p className="text-indigo-300 mt-2 text-sm">{dateStr}</p>
-          </div>
+  if (!session) return <SignInPage />
+
+  const firstName = session.user.name?.split(' ')[0] ?? 'there'
+
+  return (
+    <div className="flex min-h-screen bg-[var(--bg)]">
+      <Sidebar />
+
+      <main className="ml-40 flex-1">
+        {/* Top bar */}
+        <div className="sticky top-0 z-40 bg-[var(--surface)] border-b border-[var(--border)] px-8 h-[52px] flex items-center justify-between">
+          <span className="text-[13px] font-semibold text-[var(--text)]">
+            {getGreeting()}, {firstName} 👋
+          </span>
+          <span className="text-[11px] text-[var(--text-3)]">{dateStr}</span>
         </div>
 
-        {/* Content */}
-        <div className="p-8">
-          {activeTab === 'Week' && (
-            <div className="grid grid-cols-3 gap-6">
-              <div className="col-span-3">
-                <TaskChecklist />
-              </div>
-              <div className="col-span-3">
-                <GymTracker />
-              </div>
-              <div className="col-span-2">
-                <WeeklyFocus />
-              </div>
-              <div className="col-span-1">
-                <Reflections />
-              </div>
-              <div>
-                <GoalsKanban />
-              </div>
-              <div>
-                <HabitTracker />
-              </div>
+        {/* All content — single scroll */}
+        <div className="px-8 pt-7 pb-[100px]">
+
+          <div className="mb-9">
+            <DashboardOverview />
+          </div>
+
+          <DailyIntention />
+
+          <Section label="Weekly Schedule" emoji="📅">
+            <div className="grid grid-cols-[1fr_270px] gap-3 items-start">
+              <WeeklySchedule />
+              <PomodoroTimer />
             </div>
-          )}
+          </Section>
 
-          {activeTab === 'Quarter' && (
-            <div className="text-gray-400">Quarter view coming soon</div>
-          )}
+          <Section label="Reflection & Countdowns" emoji="✍️">
+            <div className="grid grid-cols-2 gap-3">
+              <Reflections />
+              <CountdownTimer />
+            </div>
+          </Section>
 
-          {activeTab === 'Year' && (
-            <div className="text-gray-400">Year view coming soon</div>
-          )}
+          <Section label="Calendar" emoji="📆">
+            <GoogleCalendar />
+          </Section>
+
+          <Section label="Goals" emoji="🎯">
+            <GoalsKanban />
+          </Section>
+
+          <Section label="Habits & Reading" emoji="📚">
+            <div className="grid grid-cols-2 gap-3">
+              <HabitTracker />
+              <ReadingList />
+            </div>
+          </Section>
+
         </div>
       </main>
     </div>

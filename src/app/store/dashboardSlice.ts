@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit"
-import { PayloadAction } from "@reduxjs/toolkit"
-import { DashboardData, Goal, Habit, Task, ReadingItem, ReadingStatus } from "../types/dashboard"
-import { Status, Category } from "../types/dashboard"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { DashboardData, Goal, Habit, Task, ReadingItem, ReadingStatus, Status, Category, Countdown, WeekSchedule, ReflectionEntry } from "../types/dashboard"
+
+const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
 const initialState = {
     dashboardData: {
@@ -9,12 +9,15 @@ const initialState = {
             tasks: [] as Task[],
             gymDays: [] as string[],
             focus: "",
-            reflections: ""
+            reflections: "",
         },
-        goals:[] as Goal[],
+        goals: [] as Goal[],
         habits: [] as Habit[],
-        readingList: [] as ReadingItem[]
-        
+        readingList: [] as ReadingItem[],
+        countdown: [] as Countdown[],
+        weekSchedule: DAYS.reduce((acc, d) => ({ ...acc, [d]: [] }), {}) as WeekSchedule,
+        reflections: [] as ReflectionEntry[],
+        dailyIntention: "",
     },
 }
 
@@ -22,28 +25,32 @@ const dashboardSlice = createSlice({
     name: "dashboard",
     initialState,
     reducers: {
+        setDashboardData: (state, action: PayloadAction<DashboardData>) => {
+            state.dashboardData = {
+                ...action.payload,
+                weekSchedule: action.payload.weekSchedule ?? DAYS.reduce((acc, d) => ({ ...acc, [d]: [] }), {}),
+                reflections: action.payload.reflections ?? [],
+                dailyIntention: action.payload.dailyIntention ?? "",
+            }
+        },
+
+        setDailyIntention: (state, action: PayloadAction<string>) => {
+            state.dashboardData.dailyIntention = action.payload
+        },
+
         toggleTask: (state, action: PayloadAction<string>) => {
             const task = state.dashboardData.weekData.tasks.find(t => t.id === action.payload)
             if (task) task.completed = !task.completed
         },
 
-        setDashboardData: (state, action: PayloadAction<DashboardData>) => {
-            state.dashboardData = action.payload
-        },
-
         addTask: (state, action: PayloadAction<Task>) => {
-            state.dashboardData.weekData.tasks.push(action.payload) 
-            // Redux Toolkit uses a library called Immer under the hood which allows you to mutate state directly like push — it looks like mutation but is actually immutable under the hood. You'd never do this in regular Redux.
+            state.dashboardData.weekData.tasks.push(action.payload)
         },
 
         toggleGymDay: (state, action: PayloadAction<string>) => {
-            const gymDayPresent = state.dashboardData.weekData.gymDays.includes(action.payload)  
-            if (gymDayPresent) {
-                state.dashboardData.weekData.gymDays = state.dashboardData.weekData.gymDays.filter(day => day !== action.payload)
-            }
-            else {
-                state.dashboardData.weekData.gymDays.push(action.payload)
-            }
+            const present = state.dashboardData.weekData.gymDays.includes(action.payload)
+            if (present) state.dashboardData.weekData.gymDays = state.dashboardData.weekData.gymDays.filter(d => d !== action.payload)
+            else state.dashboardData.weekData.gymDays.push(action.payload)
         },
 
         setFocus: (state, action: PayloadAction<string>) => {
@@ -58,16 +65,13 @@ const dashboardSlice = createSlice({
             state.dashboardData.goals.push(action.payload)
         },
 
-        setUpdateGoalStatus: (state, action: PayloadAction<{id: string, status: Status}>) => {
-            const status = action.payload.status
-            const id = action.payload.id
-            const currentGoal = state.dashboardData.goals.find(goal => goal.id == id)
-            if (currentGoal) currentGoal.status = status
+        setUpdateGoalStatus: (state, action: PayloadAction<{ id: string; status: Status }>) => {
+            const goal = state.dashboardData.goals.find(g => g.id === action.payload.id)
+            if (goal) goal.status = action.payload.status
         },
-        // instead of accessing the whole goal we will deconstruct and access the id and status fields
 
         setDeleteGoal: (state, action: PayloadAction<string>) => {
-            state.dashboardData.goals = state.dashboardData.goals.filter(goal => goal.id !== action.payload)
+            state.dashboardData.goals = state.dashboardData.goals.filter(g => g.id !== action.payload)
         },
 
         setAddHabit: (state, action: PayloadAction<Habit>) => {
@@ -75,19 +79,15 @@ const dashboardSlice = createSlice({
         },
 
         setDeleteHabit: (state, action: PayloadAction<string>) => {
-            state.dashboardData.habits = state.dashboardData.habits.filter(goal => goal.id !== action.payload)
+            state.dashboardData.habits = state.dashboardData.habits.filter(h => h.id !== action.payload)
         },
 
-        toggleHabitday: (state, action: PayloadAction<{id: string, day: string}>) => {
-            const habit = state.dashboardData.habits.find(habit => habit.id === action.payload.id)
+        toggleHabitday: (state, action: PayloadAction<{ id: string; day: string }>) => {
+            const habit = state.dashboardData.habits.find(h => h.id === action.payload.id)
             if (!habit) return
-            const completedDay = habit.completedDays.includes(action.payload.day)
-            if (completedDay) {
-                habit.completedDays = habit.completedDays.filter(completedDay => completedDay !== action.payload.day)
-            }
-            else {
-                habit.completedDays.push(action.payload.day)
-            }
+            const has = habit.completedDays.includes(action.payload.day)
+            if (has) habit.completedDays = habit.completedDays.filter(d => d !== action.payload.day)
+            else habit.completedDays.push(action.payload.day)
         },
 
         setAddReadingItem: (state, action: PayloadAction<ReadingItem>) => {
@@ -95,33 +95,60 @@ const dashboardSlice = createSlice({
         },
 
         setDeleteReadingItem: (state, action: PayloadAction<string>) => {
-            state.dashboardData.readingList = state.dashboardData.readingList.filter(readingItem => readingItem.id !== action.payload)
+            state.dashboardData.readingList = state.dashboardData.readingList.filter(r => r.id !== action.payload)
         },
 
-        setUpdateReadingStatus: (state, action: PayloadAction<{id: string, readingStatus: ReadingStatus}>) => {
-            const book = state.dashboardData.readingList.find(book => book.id === action.payload.id)
-            if(!book) return
+        setUpdateReadingItem: (state, action: PayloadAction<{ id: string; review: string; rating: number; readingStatus: ReadingStatus; name: string; author: string }>) => {
+            const book = state.dashboardData.readingList.find(b => b.id === action.payload.id)
+            if (!book) return
             book.status = action.payload.readingStatus
-        }}
+            book.rating = action.payload.rating
+            book.review = action.payload.review
+            book.author = action.payload.author
+            book.name   = action.payload.name
+        },
+
+        setAddCountdown: (state, action: PayloadAction<Countdown>) => {
+            state.dashboardData.countdown.push(action.payload)
+        },
+
+        setDeleteCountdown: (state, action: PayloadAction<string>) => {
+            state.dashboardData.countdown = state.dashboardData.countdown.filter(c => c.id !== action.payload)
+        },
+
+        addReflection: (state, action: PayloadAction<ReflectionEntry>) => {
+            state.dashboardData.reflections.unshift(action.payload)
+        },
+
+        deleteReflection: (state, action: PayloadAction<string>) => {
+            state.dashboardData.reflections = state.dashboardData.reflections.filter(r => r.id !== action.payload)
+        },
+
+        addScheduleItem: (state, action: PayloadAction<{ day: string; text: string }>) => {
+            const { day, text } = action.payload
+            if (!state.dashboardData.weekSchedule[day]) state.dashboardData.weekSchedule[day] = []
+            state.dashboardData.weekSchedule[day].push(text)
+        },
+
+        removeScheduleItem: (state, action: PayloadAction<{ day: string; index: number }>) => {
+            const { day, index } = action.payload
+            state.dashboardData.weekSchedule[day].splice(index, 1)
+        },
+    },
 })
 
-
 export const {
-    toggleTask,
     setDashboardData,
-    addTask,
+    setDailyIntention,
+    toggleTask, addTask,
     toggleGymDay,
-    setFocus,
-    setReflections,
-    setCreateGoal,
-    setUpdateGoalStatus,
-    setDeleteGoal,
-    setAddHabit,
-    setDeleteHabit,
-    toggleHabitday,
-    setAddReadingItem,
-    setDeleteReadingItem,
-    setUpdateReadingStatus
+    setFocus, setReflections,
+    setCreateGoal, setUpdateGoalStatus, setDeleteGoal,
+    setAddHabit, setDeleteHabit, toggleHabitday,
+    setAddReadingItem, setDeleteReadingItem, setUpdateReadingItem,
+    setAddCountdown, setDeleteCountdown,
+    addScheduleItem, removeScheduleItem,
+    addReflection, deleteReflection,
 } = dashboardSlice.actions
 
 export default dashboardSlice.reducer

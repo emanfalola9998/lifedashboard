@@ -1,51 +1,54 @@
 'use client'
+import { useSession, signOut } from 'next-auth/react'
 import ThemeToggle from './ThemeToggle'
 
-const navItems = [
-    { label: 'Week', icon: '📅' },
-    { label: 'Quarter', icon: '📊' },
-    { label: 'Year', icon: '🗓' },
-]
+export default function Sidebar() {
+  const { data: session } = useSession()
+  const name  = session?.user?.name ?? 'User'
+  const image = session?.user?.image
+  const initial = name.charAt(0).toUpperCase()
 
-    export default function Sidebar({ activeTab, onTabChange }: {
-    activeTab: string
-    onTabChange: (tab: string) => void
-    }) {
-    return (
-        <aside className="fixed left-0 top-0 h-screen w-56 bg-gray-900 border-r border-gray-800 flex flex-col">
-        
-        {/* Logo area */}
-        <div className="p-6 border-b border-gray-800">
-            <h1 className="text-lg font-bold text-white">Life Dashboard</h1>
-            <p className="text-xs text-gray-500 mt-0.5">Your command center</p>
+  return (
+    <aside className="fixed left-0 top-0 h-screen w-40 bg-[var(--surface)] border-r border-[var(--border)] flex flex-col z-50">
+      {/* Logo */}
+      <div className="px-4 pt-5 pb-[18px] border-b border-[var(--border)]">
+        <div className="flex items-center gap-2.5">
+          <div
+            className="w-7 h-7 rounded-lg shrink-0 flex items-center justify-center text-[13px] font-bold text-white"
+            style={{ background: 'linear-gradient(135deg, #818cf8, #a78bfa)' }}
+          >L</div>
+          <div>
+            <div className="text-xs font-bold text-[var(--text)] tracking-[-0.2px]">Life Dashboard</div>
+            <div className="text-[10px] text-[var(--text-3)] mt-px">Personal HQ</div>
+          </div>
         </div>
+      </div>
 
-        {/* Nav items */}
-        <nav className="flex-1 p-4 space-y-1">
-            {navItems.map(item => (
-            <button
-                key={item.label}
-                onClick={() => onTabChange(item.label)}
-                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${
-                activeTab === item.label
-                    ? 'bg-indigo-500/20 text-indigo-400 font-medium'
-                    : 'text-gray-400 hover:bg-gray-800 hover:text-white'
-                }`}
-            >
-                <span>{item.icon}</span>
-                <span>{item.label}</span>
-            </button>
-            ))}
-        </nav>
+      <div className="flex-1" />
 
-        {/* Bottom — user + theme toggle */}
-        <div className="p-4 border-t border-gray-800 flex items-center justify-between">
-            <div>
-            <p className="text-sm font-medium text-white">Emmanuel</p>
-            <p className="text-xs text-gray-500">Personal</p>
+      {/* User + theme toggle */}
+      <div className="px-4 py-3.5 border-t border-[var(--border)]">
+        <div className="flex items-center justify-between mb-2.5">
+          <div className="flex items-center gap-2 min-w-0">
+            {image ? (
+              <img src={image} alt={name} className="w-[26px] h-[26px] rounded-full shrink-0 object-cover" />
+            ) : (
+              <div
+                className="w-[26px] h-[26px] rounded-full shrink-0 flex items-center justify-center text-[11px] font-bold text-white"
+                style={{ background: 'linear-gradient(135deg, #818cf8, #a78bfa)' }}
+              >{initial}</div>
+            )}
+            <div className="min-w-0">
+              <div className="text-[11px] font-semibold text-[var(--text)] truncate">{name.split(' ')[0]}</div>
+              <button
+                onClick={() => signOut()}
+                className="text-[10px] text-[var(--text-3)] hover:text-[var(--red)] bg-transparent border-none p-0 cursor-pointer transition-colors duration-150 text-left"
+              >Sign out</button>
             </div>
-            <ThemeToggle />
+          </div>
         </div>
-        </aside>
-    )
+        <ThemeToggle />
+      </div>
+    </aside>
+  )
 }

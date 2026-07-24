@@ -1,38 +1,43 @@
+export interface ReflectionEntry {
+    id: string;
+    text: string;
+    createdAt: string;
+}
 
 export interface DashboardData {
     weekData: WeekData;
     goals: Goal[];
     habits: Habit[];
     readingList: ReadingItem[];
+    countdown: Countdown[];
+    weekSchedule: WeekSchedule;
+    reflections: ReflectionEntry[];
+    dailyIntention: string;
 }
 
-// A single task
 export interface Task {
     id: string;
     text: string;
     completed: boolean;
 }
 
-// The full week data
 export interface WeekData {
     tasks: Task[];
     gymDays: string[];
     focus: string;
-    reflections: string
-
+    reflections: string;
 }
 
 export type Status = "Not Started" | "In Progress" | "Done"
-export type Category = "Health" | "Work" | "Personal"
+export type Category = "Work" | "Personal" | "Secondary Income" | "Quarterly Goals" | "Personal Development" | "Career Development" | "Health/Fitness" | "Life Skils" | "Passion Projects"| "Milestones" | "Finances"
 export type Timeframe = "Week" | "Month" | "Year"
 
 export interface Goal {
     id: string;
     text: string;
     status: Status;
-    timeframe: Timeframe;
     dueDate: string;
-    category?: Category 
+    category?: Category;
 }
 
 export interface Habit {
@@ -47,7 +52,17 @@ export interface ReadingItem {
     id: string;
     name: string;
     author: string;
-    status: ReadingStatus
-    rating: number,
-    review?: string
+    status: ReadingStatus;
+    rating: number;
+    review?: string;
+}
+
+export interface Countdown {
+    id: string;
+    name: string;
+    date: string;
+}
+
+export type WeekSchedule = {
+    [day: string]: string[];
 }

@@ -1,7 +1,66 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
+*, *::before, *::after { box-sizing: border-box; }
 
-body {
-  @apply bg-gray-50 dark:bg-gray-950 transition-colors duration-300;
+/* ── Dark mode (default) ── */
+:root {
+  --bg:        #0e0f10;
+  --surface:   #161718;
+  --raised:    #1c1d1f;
+  --elevated:  #232426;
+  --border:    #2c2d30;
+  --border-hi: #3c3d42;
+  --text:      #e2e3e8;
+  --text-2:    #68697a;
+  --text-3:    #3a3c48;
+  --accent:    #818cf8;
+  --green:     #34d399;
+  --blue:      #60a5fa;
+  --pink:      #f472b6;
+  --amber:     #fbbf24;
+  --red:       #f87171;
+  --purple:    #a78bfa;
+  --teal:      #2dd4bf;
 }
+
+/* ── Light mode ── */
+[data-theme="light"] {
+  --bg:        #f0f1f4;
+  --surface:   #ffffff;
+  --raised:    #f5f6f9;
+  --elevated:  #eaebf0;
+  --border:    #dde0e8;
+  --border-hi: #c4c8d8;
+  --text:      #1a1b22;
+  --text-2:    #6b6e80;
+  --text-3:    #a8aab8;
+  --accent:    #6366f1;
+  --green:     #059669;
+  --blue:      #2563eb;
+  --pink:      #db2777;
+  --amber:     #d97706;
+  --red:       #dc2626;
+  --purple:    #7c3aed;
+  --teal:      #0d9488;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+button, input, textarea, select, optgroup { font-family: inherit; }
+input, textarea, select { color-scheme: dark; }
+[data-theme="light"] input,
+[data-theme="light"] textarea,
+[data-theme="light"] select { color-scheme: light; }
+
+input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.4); }
+[data-theme="light"] input[type="date"]::-webkit-calendar-picker-indicator { filter: none; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--elevated); border-radius: 3px; }
+::placeholder { color: var(--text-3); }
