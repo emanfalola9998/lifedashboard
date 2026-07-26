@@ -33,8 +33,8 @@ function Section({ label, emoji, children }: { label: string; emoji: string; chi
 
 function SignInPage() {
   return (
-    <div className="min-h-screen bg-[var(--bg)] flex items-center justify-center">
-      <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl px-10 py-12 w-full max-w-sm text-center">
+    <div className="min-h-screen bg-[var(--bg)] flex items-center justify-center px-4">
+      <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl px-8 py-12 w-full max-w-sm text-center">
         <div
           className="w-12 h-12 rounded-xl flex items-center justify-center text-xl font-bold text-white mx-auto mb-6"
           style={{ background: 'linear-gradient(135deg, #818cf8, #a78bfa)' }}
@@ -59,6 +59,7 @@ function SignInPage() {
 export default function Home() {
   const { data: session, status } = useSession()
   const [dateStr, setDateStr] = useState('')
+  const [sidebarOpen, setSidebarOpen] = useState(false)
 
   useEffect(() => {
     setDateStr(new Date().toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }))
@@ -78,19 +79,30 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen bg-[var(--bg)]">
-      <Sidebar />
+      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
-      <main className="ml-40 flex-1">
+      <main className="md:ml-40 flex-1 min-w-0">
         {/* Top bar */}
-        <div className="sticky top-0 z-40 bg-[var(--surface)] border-b border-[var(--border)] px-8 h-[52px] flex items-center justify-between">
-          <span className="text-[13px] font-semibold text-[var(--text)]">
+        <div className="sticky top-0 z-40 bg-[var(--surface)] border-b border-[var(--border)] px-4 md:px-8 h-[52px] flex items-center justify-between">
+          {/* Hamburger — mobile only */}
+          <button
+            className="md:hidden p-1.5 rounded-lg text-[var(--text-2)] hover:text-[var(--text)] bg-transparent border-none cursor-pointer mr-2"
+            onClick={() => setSidebarOpen(true)}
+            aria-label="Open menu"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+              <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+          </button>
+
+          <span className="text-[13px] font-semibold text-[var(--text)] flex-1">
             {getGreeting()}, {firstName} 👋
           </span>
-          <span className="text-[11px] text-[var(--text-3)]">{dateStr}</span>
+          <span className="text-[11px] text-[var(--text-3)] hidden sm:block">{dateStr}</span>
         </div>
 
         {/* All content — single scroll */}
-        <div className="px-8 pt-7 pb-[100px]">
+        <div className="px-4 md:px-8 pt-6 pb-[100px]">
 
           <div className="mb-9">
             <DashboardOverview />
@@ -99,14 +111,14 @@ export default function Home() {
           <DailyIntention />
 
           <Section label="Weekly Schedule" emoji="📅">
-            <div className="grid grid-cols-[1fr_270px] gap-3 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_270px] gap-3 items-start">
               <WeeklySchedule />
               <PomodoroTimer />
             </div>
           </Section>
 
           <Section label="Reflection & Countdowns" emoji="✍️">
-            <div className="grid grid-cols-2 gap-3 mb-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
               <Reflections />
               <CountdownTimer />
             </div>
@@ -122,7 +134,7 @@ export default function Home() {
           </Section>
 
           <Section label="Habits & Reading" emoji="📚">
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <HabitTracker />
               <ReadingList />
             </div>

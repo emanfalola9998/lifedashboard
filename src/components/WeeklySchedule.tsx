@@ -33,7 +33,8 @@ const WeeklySchedule = () => {
     <div className="bg-[var(--surface)] border border-[var(--border)] rounded-xl px-[22px] py-5">
       <div className="text-[13px] font-semibold text-[var(--text)] mb-4">Weekly Schedule</div>
 
-      <div className="grid grid-cols-7 gap-2">
+      <div className="overflow-x-auto -mx-[22px] px-[22px]">
+      <div className="grid grid-cols-7 gap-2 min-w-[560px]">
         {DAYS.map(({ key, tint, border }) => {
           const items = schedule[key] ?? []
           return (
@@ -69,6 +70,7 @@ const WeeklySchedule = () => {
             </div>
           )
         })}
+      </div>
       </div>
     </div>
   )

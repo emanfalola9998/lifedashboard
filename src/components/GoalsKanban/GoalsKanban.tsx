@@ -70,7 +70,7 @@ const GoalsKanban = () => {
         >+ Add Goal</button>
       </div>
 
-      <div className="flex gap-4">
+      <div className="flex flex-col md:flex-row gap-4">
         <DndContext onDragEnd={handleDragEnd}>
           <GoalColumn status="Not Started" goals={notStarted} onEdit={openEdit} />
           <GoalColumn status="In Progress" goals={inProgress} onEdit={openEdit} />

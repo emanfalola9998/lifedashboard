@@ -27,7 +27,7 @@ const DashboardOverview = () => {
   ]
 
   return (
-    <div className="grid grid-cols-4 gap-3">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
       {stats.map(s => (
         <div key={s.label} className="bg-[var(--surface)] border border-[var(--border)] rounded-xl px-5 py-[18px]">
           <div className="text-[10px] font-bold tracking-[0.08em] uppercase text-[var(--text-2)] mb-2.5">{s.label}</div>
