@@ -13,6 +13,7 @@ export interface DashboardData {
     weekSchedule: WeekSchedule;
     reflections: ReflectionEntry[];
     dailyIntention: string;
+    reminders: Reminder[];
 }
 
 export interface Task {
@@ -61,6 +62,16 @@ export interface Countdown {
     id: string;
     name: string;
     date: string;
+}
+
+export type ReminderRecurrence = "once" | "weekly" | "monthly" | "yearly"
+
+export interface Reminder {
+    id: string;
+    name: string;
+    amount?: string;
+    recurrence: ReminderRecurrence;
+    nextDue: string;
 }
 
 export type WeekSchedule = {

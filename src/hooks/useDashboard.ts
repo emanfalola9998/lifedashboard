@@ -37,6 +37,7 @@ export function useDashboard() {
                     weekSchedule: data.weekSchedule ?? {},
                     reflections: data.reflections ?? [],
                     dailyIntention: data.dailyIntention ?? "",
+                    reminders: data.reminders ?? [],
                 }))
             } catch (error) { console.log("error: ", error) }
         }

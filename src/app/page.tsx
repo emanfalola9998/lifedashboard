@@ -12,6 +12,7 @@ import WeeklySchedule from '@/components/WeeklySchedule'
 import PomodoroTimer from '@/components/PomodoroTimer'
 import DailyIntention from '@/components/DailyIntention'
 import GoogleCalendar from '@/components/GoogleCalendar'
+import Reminders from '@/components/Reminders'
 
 function getGreeting() {
   const h = new Date().getHours()
@@ -105,10 +106,11 @@ export default function Home() {
           </Section>
 
           <Section label="Reflection & Countdowns" emoji="✍️">
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-3 mb-3">
               <Reflections />
               <CountdownTimer />
             </div>
+            <Reminders />
           </Section>
 
           <Section label="Calendar" emoji="📆">

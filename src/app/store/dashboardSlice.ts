@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { DashboardData, Goal, Habit, Task, ReadingItem, ReadingStatus, Status, Category, Countdown, WeekSchedule, ReflectionEntry } from "../types/dashboard"
+import { DashboardData, Goal, Habit, Task, ReadingItem, ReadingStatus, Status, Category, Countdown, WeekSchedule, ReflectionEntry, Reminder, ReminderRecurrence } from "../types/dashboard"
 
 const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
@@ -18,6 +18,7 @@ const initialState = {
         weekSchedule: DAYS.reduce((acc, d) => ({ ...acc, [d]: [] }), {}) as WeekSchedule,
         reflections: [] as ReflectionEntry[],
         dailyIntention: "",
+        reminders: [] as Reminder[],
     },
 }
 
@@ -31,6 +32,7 @@ const dashboardSlice = createSlice({
                 weekSchedule: action.payload.weekSchedule ?? DAYS.reduce((acc, d) => ({ ...acc, [d]: [] }), {}),
                 reflections: action.payload.reflections ?? [],
                 dailyIntention: action.payload.dailyIntention ?? "",
+                reminders: action.payload.reminders ?? [],
             }
         },
 
@@ -116,6 +118,28 @@ const dashboardSlice = createSlice({
             state.dashboardData.countdown = state.dashboardData.countdown.filter(c => c.id !== action.payload)
         },
 
+        addReminder: (state, action: PayloadAction<Reminder>) => {
+            state.dashboardData.reminders.push(action.payload)
+        },
+
+        deleteReminder: (state, action: PayloadAction<string>) => {
+            state.dashboardData.reminders = state.dashboardData.reminders.filter(r => r.id !== action.payload)
+        },
+
+        markReminderPaid: (state, action: PayloadAction<string>) => {
+            const r = state.dashboardData.reminders.find(r => r.id === action.payload)
+            if (!r) return
+            if (r.recurrence === "once") {
+                state.dashboardData.reminders = state.dashboardData.reminders.filter(x => x.id !== action.payload)
+                return
+            }
+            const d = new Date(r.nextDue)
+            if (r.recurrence === "weekly")  d.setDate(d.getDate() + 7)
+            if (r.recurrence === "monthly") d.setMonth(d.getMonth() + 1)
+            if (r.recurrence === "yearly")  d.setFullYear(d.getFullYear() + 1)
+            r.nextDue = d.toISOString().substring(0, 10)
+        },
+
         addReflection: (state, action: PayloadAction<ReflectionEntry>) => {
             state.dashboardData.reflections.unshift(action.payload)
         },
@@ -149,6 +173,7 @@ export const {
     setAddCountdown, setDeleteCountdown,
     addScheduleItem, removeScheduleItem,
     addReflection, deleteReflection,
+    addReminder, deleteReminder, markReminderPaid,
 } = dashboardSlice.actions
 
 export default dashboardSlice.reducer
