@@ -2,9 +2,9 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '@/app/store/store'
-import { addReminder, deleteReminder, markReminderPaid } from '@/app/store/dashboardSlice'
+import { addReminder, deleteReminder, markReminderPaid, editReminder } from '@/app/store/dashboardSlice'
 import { useDashboard } from '@/hooks/useDashboard'
-import { ReminderRecurrence } from '@/app/types/dashboard'
+import { Reminder, ReminderRecurrence } from '@/app/types/dashboard'
 
 const inputCls = "w-full bg-[var(--raised)] border border-[var(--border)] rounded-[10px] px-3.5 py-[11px] text-[13px] text-[var(--text)] outline-none"
 const selectCls = `${inputCls} cursor-pointer`
@@ -27,26 +27,46 @@ function urgencyColor(days: number) {
   return 'var(--green)'
 }
 
+type ModalState = { mode: 'add' } | { mode: 'edit'; item: Reminder }
+
 const Reminders = () => {
   const dispatch = useDispatch<AppDispatch>()
   const { dashboardData } = useDashboard()
-  const [isOpen, setIsOpen] = useState(false)
+  const [modal, setModal]         = useState<ModalState | null>(null)
   const [name, setName]           = useState("")
   const [amount, setAmount]       = useState("")
   const [recurrence, setRecurrence] = useState<ReminderRecurrence>("monthly")
   const [nextDue, setNextDue]     = useState("")
 
-  const add = () => {
+  const openAdd = () => {
+    setName(""); setAmount(""); setRecurrence("monthly"); setNextDue("")
+    setModal({ mode: 'add' })
+  }
+
+  const openEdit = (item: Reminder) => {
+    setName(item.name)
+    setAmount(item.amount ?? "")
+    setRecurrence(item.recurrence)
+    setNextDue(item.nextDue)
+    setModal({ mode: 'edit', item })
+  }
+
+  const close = () => setModal(null)
+
+  const save = () => {
     if (!name || !nextDue) return
-    dispatch(addReminder({
-      id: crypto.randomUUID(),
+    const payload = {
       name,
       amount: amount.trim() || undefined,
       recurrence,
       nextDue,
-    }))
-    setName(""); setAmount(""); setRecurrence("monthly"); setNextDue("")
-    setIsOpen(false)
+    }
+    if (modal?.mode === 'add') {
+      dispatch(addReminder({ id: crypto.randomUUID(), ...payload }))
+    } else if (modal?.mode === 'edit') {
+      dispatch(editReminder({ id: modal.item.id, ...payload }))
+    }
+    close()
   }
 
   const sorted = [...dashboardData.reminders].sort((a, b) =>
@@ -58,7 +78,7 @@ const Reminders = () => {
       <div className="flex items-center justify-between mb-5">
         <span className="text-sm font-semibold text-[var(--text)]">Reminders</span>
         <button
-          onClick={() => setIsOpen(true)}
+          onClick={openAdd}
           className="text-xs font-semibold px-3.5 py-1.5 rounded-lg cursor-pointer"
           style={{ background: 'rgba(91,110,248,0.1)', color: 'var(--accent)', border: '1px solid rgba(91,110,248,0.2)' }}
         >+ Add</button>
@@ -70,8 +90,11 @@ const Reminders = () => {
           const color = urgencyColor(days)
           return (
             <div key={r.id} className="flex items-center justify-between bg-[var(--raised)] border border-[var(--border)] rounded-xl px-4 py-3">
-              <div className="min-w-0 flex-1">
-                <div className="text-[13px] font-semibold text-[var(--text)] truncate">{r.name}</div>
+              <button
+                onClick={() => openEdit(r)}
+                className="text-left bg-transparent border-none p-0 cursor-pointer flex-1 min-w-0 group"
+              >
+                <div className="text-[13px] font-semibold text-[var(--text)] truncate group-hover:text-[var(--accent)] transition-colors duration-150">{r.name}</div>
                 <div className="flex items-center gap-2 mt-[3px]">
                   {r.amount && (
                     <span className="text-[11px] font-semibold" style={{ color: 'var(--green)' }}>{r.amount}</span>
@@ -82,7 +105,7 @@ const Reminders = () => {
                     {days < 0 ? 'Overdue' : days === 0 ? 'Due today' : `${days}d`}
                   </span>
                 </div>
-              </div>
+              </button>
               <div className="flex items-center gap-2 ml-3 shrink-0">
                 <button
                   onClick={() => dispatch(markReminderPaid(r.id))}
@@ -104,10 +127,12 @@ const Reminders = () => {
         )}
       </div>
 
-      {isOpen && (
+      {modal && (
         <div className="fixed inset-0 bg-black/65 backdrop-blur-[6px] flex items-center justify-center z-[100]">
           <div className="bg-[var(--surface)] border border-[var(--border)] rounded-[18px] p-7 w-full max-w-[420px]">
-            <div className="text-[15px] font-semibold text-[var(--text)] mb-5">Add Reminder</div>
+            <div className="text-[15px] font-semibold text-[var(--text)] mb-5">
+              {modal.mode === 'add' ? 'Add Reminder' : 'Edit Reminder'}
+            </div>
             <input
               placeholder="e.g. Emmanuel owes me..."
               value={name}
@@ -138,8 +163,8 @@ const Reminders = () => {
               className={`${inputCls} mb-5`}
             />
             <div className="flex gap-2.5">
-              <button onClick={add} className="flex-1 bg-[var(--accent)] text-white border-none rounded-[10px] py-[11px] text-[13px] font-semibold cursor-pointer">Save</button>
-              <button onClick={() => setIsOpen(false)} className="flex-1 bg-[var(--raised)] text-[var(--text-2)] border border-[var(--border)] rounded-[10px] py-[11px] text-[13px] font-semibold cursor-pointer">Cancel</button>
+              <button onClick={save} className="flex-1 bg-[var(--accent)] text-white border-none rounded-[10px] py-[11px] text-[13px] font-semibold cursor-pointer">Save</button>
+              <button onClick={close} className="flex-1 bg-[var(--raised)] text-[var(--text-2)] border border-[var(--border)] rounded-[10px] py-[11px] text-[13px] font-semibold cursor-pointer">Cancel</button>
             </div>
           </div>
         </div>

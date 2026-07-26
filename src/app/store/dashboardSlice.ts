@@ -118,12 +118,22 @@ const dashboardSlice = createSlice({
             state.dashboardData.countdown = state.dashboardData.countdown.filter(c => c.id !== action.payload)
         },
 
+        setEditCountdown: (state, action: PayloadAction<Countdown>) => {
+            const c = state.dashboardData.countdown.find(c => c.id === action.payload.id)
+            if (c) { c.name = action.payload.name; c.date = action.payload.date }
+        },
+
         addReminder: (state, action: PayloadAction<Reminder>) => {
             state.dashboardData.reminders.push(action.payload)
         },
 
         deleteReminder: (state, action: PayloadAction<string>) => {
             state.dashboardData.reminders = state.dashboardData.reminders.filter(r => r.id !== action.payload)
+        },
+
+        editReminder: (state, action: PayloadAction<Reminder>) => {
+            const r = state.dashboardData.reminders.find(r => r.id === action.payload.id)
+            if (r) { r.name = action.payload.name; r.amount = action.payload.amount; r.recurrence = action.payload.recurrence; r.nextDue = action.payload.nextDue }
         },
 
         markReminderPaid: (state, action: PayloadAction<string>) => {
@@ -170,10 +180,10 @@ export const {
     setCreateGoal, setUpdateGoalStatus, setDeleteGoal,
     setAddHabit, setDeleteHabit, toggleHabitday,
     setAddReadingItem, setDeleteReadingItem, setUpdateReadingItem,
-    setAddCountdown, setDeleteCountdown,
+    setAddCountdown, setDeleteCountdown, setEditCountdown,
     addScheduleItem, removeScheduleItem,
     addReflection, deleteReflection,
-    addReminder, deleteReminder, markReminderPaid,
+    addReminder, deleteReminder, markReminderPaid, editReminder,
 } = dashboardSlice.actions
 
 export default dashboardSlice.reducer
