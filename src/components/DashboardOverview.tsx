@@ -12,8 +12,8 @@ const DashboardOverview = () => {
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())[0]
   const daysRemaining = (d: string) => Math.ceil((new Date(d).getTime() - Date.now()) / 86400000)
 
-  const totalCompleted = dashboardData.habits.reduce((s, h) => s + h.completedDays.length, 0)
-  const totalPossible  = dashboardData.habits.length * 7
+  const totalCompleted = dashboardData.habits.reduce((s, h) => s + Math.min(h.completedDays.length, h.targetDays ?? 7), 0)
+  const totalPossible  = dashboardData.habits.reduce((s, h) => s + (h.targetDays ?? 7), 0)
   const habitPct       = totalPossible > 0 ? Math.round((totalCompleted / totalPossible) * 100) : 0
 
   const booksRead  = dashboardData.readingList.filter(b => b.status === "Finished").length
