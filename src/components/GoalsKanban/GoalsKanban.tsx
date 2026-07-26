@@ -3,15 +3,23 @@ import React, { useState } from 'react'
 import { useDashboard } from '@/hooks/useDashboard'
 import { useDispatch } from 'react-redux'
 import GoalColumn from './GoalColumn/GoalColumn'
-import { Category } from '@/app/types/dashboard'
-import { setCreateGoal, setUpdateGoalStatus } from '@/app/store/dashboardSlice'
+import { Category, Goal } from '@/app/types/dashboard'
+import { setCreateGoal, setUpdateGoalStatus, setEditGoal } from '@/app/store/dashboardSlice'
 import type { Status } from '@/app/types/dashboard'
 import { DndContext } from '@dnd-kit/core'
 
 const inputCls = "w-full bg-[var(--raised)] border border-[var(--border)] rounded-[10px] px-3.5 py-[11px] text-[13px] text-[var(--text)] outline-none mb-3"
 
+const CATEGORIES: Category[] = [
+  "Secondary Income", "Quarterly Goals", "Personal Development",
+  "Career Development", "Finances", "Life Skils", "Passion Projects",
+  "Milestones", "Health/Fitness", "Work", "Personal",
+]
+
+type ModalState = { mode: 'add' } | { mode: 'edit'; goal: Goal }
+
 const GoalsKanban = () => {
-  const [isOpen, setIsOpen]     = useState(false)
+  const [modal, setModal]       = useState<ModalState | null>(null)
   const [text, setText]         = useState("")
   const [category, setCategory] = useState<Category>("Personal")
   const [dueDate, setDueDate]   = useState("")
@@ -23,10 +31,28 @@ const GoalsKanban = () => {
   const inProgress = dashboardData.goals.filter(g => g.status === "In Progress")
   const done       = dashboardData.goals.filter(g => g.status === "Done")
 
-  const handleAdd = () => {
+  const openAdd = () => {
+    setText(""); setCategory("Personal"); setDueDate("")
+    setModal({ mode: 'add' })
+  }
+
+  const openEdit = (goal: Goal) => {
+    setText(goal.text)
+    setCategory(goal.category ?? "Personal")
+    setDueDate(goal.dueDate ?? "")
+    setModal({ mode: 'edit', goal })
+  }
+
+  const close = () => setModal(null)
+
+  const handleSave = () => {
     if (!text.trim()) return
-    dispatch(setCreateGoal({ id: crypto.randomUUID(), text: text.trim(), status: "Not Started", dueDate, category }))
-    setIsOpen(false); setText(""); setCategory("Personal"); setDueDate("")
+    if (modal?.mode === 'add') {
+      dispatch(setCreateGoal({ id: crypto.randomUUID(), text: text.trim(), status: "Not Started", dueDate, category }))
+    } else if (modal?.mode === 'edit') {
+      dispatch(setEditGoal({ ...modal.goal, text: text.trim(), dueDate, category }))
+    }
+    close()
   }
 
   const handleDragEnd = (event: any) => {
@@ -38,7 +64,7 @@ const GoalsKanban = () => {
     <div>
       <div className="flex justify-end mb-4">
         <button
-          onClick={() => setIsOpen(true)}
+          onClick={openAdd}
           className="text-xs font-semibold px-4 py-[7px] rounded-lg cursor-pointer"
           style={{ background: 'rgba(91,110,248,0.1)', color: 'var(--accent)', border: '1px solid rgba(91,110,248,0.2)' }}
         >+ Add Goal</button>
@@ -46,33 +72,26 @@ const GoalsKanban = () => {
 
       <div className="flex gap-4">
         <DndContext onDragEnd={handleDragEnd}>
-          <GoalColumn status="Not Started" goals={notStarted} />
-          <GoalColumn status="In Progress" goals={inProgress} />
-          <GoalColumn status="Done" goals={done} />
+          <GoalColumn status="Not Started" goals={notStarted} onEdit={openEdit} />
+          <GoalColumn status="In Progress" goals={inProgress} onEdit={openEdit} />
+          <GoalColumn status="Done" goals={done} onEdit={openEdit} />
         </DndContext>
       </div>
 
-      {isOpen && (
+      {modal && (
         <div className="fixed inset-0 bg-black/65 backdrop-blur-[6px] flex items-center justify-center z-[100]">
           <div className="bg-[var(--surface)] border border-[var(--border)] rounded-[18px] p-7 w-full max-w-[420px]">
-            <div className="text-[15px] font-semibold text-[var(--text)] mb-5">Add Goal</div>
+            <div className="text-[15px] font-semibold text-[var(--text)] mb-5">
+              {modal.mode === 'add' ? 'Add Goal' : 'Edit Goal'}
+            </div>
             <input value={text} onChange={e => setText(e.target.value)} className={inputCls} placeholder="What do you want to achieve?" />
             <select value={category} onChange={e => setCategory(e.target.value as Category)} className={`${inputCls} cursor-pointer`}>
-              <option value="Secondary Income">Secondary Income</option>
-              <option value="Quarterly Goals">Quarterly Goals</option>
-              <option value="Personal Development">Personal Development</option>
-              <option value="Career Development">Career Development</option>
-              <option value="Finances">Finances</option>
-              <option value="Life Skills">Life Skills</option>
-              <option value="Passion Projects">Passion Projects</option>
-              <option value="Milestones">Milestones</option>
-              <option value="Health & Fitness">Health & Fitness</option>
-              <option value="Work">Work</option>
+              {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
             </select>
             <input type="date" value={dueDate} onChange={e => setDueDate(e.target.value)} className={`${inputCls} mb-5`} />
             <div className="flex gap-2.5">
-              <button onClick={handleAdd} className="flex-1 bg-[var(--accent)] text-white border-none rounded-[10px] py-[11px] text-[13px] font-semibold cursor-pointer">Save</button>
-              <button onClick={() => setIsOpen(false)} className="flex-1 bg-[var(--raised)] text-[var(--text-2)] border border-[var(--border)] rounded-[10px] py-[11px] text-[13px] font-semibold cursor-pointer">Cancel</button>
+              <button onClick={handleSave} className="flex-1 bg-[var(--accent)] text-white border-none rounded-[10px] py-[11px] text-[13px] font-semibold cursor-pointer">Save</button>
+              <button onClick={close} className="flex-1 bg-[var(--raised)] text-[var(--text-2)] border border-[var(--border)] rounded-[10px] py-[11px] text-[13px] font-semibold cursor-pointer">Cancel</button>
             </div>
           </div>
         </div>

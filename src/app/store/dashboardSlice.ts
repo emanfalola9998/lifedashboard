@@ -76,6 +76,11 @@ const dashboardSlice = createSlice({
             state.dashboardData.goals = state.dashboardData.goals.filter(g => g.id !== action.payload)
         },
 
+        setEditGoal: (state, action: PayloadAction<Goal>) => {
+            const g = state.dashboardData.goals.find(g => g.id === action.payload.id)
+            if (g) { g.text = action.payload.text; g.dueDate = action.payload.dueDate; g.category = action.payload.category }
+        },
+
         setAddHabit: (state, action: PayloadAction<Habit>) => {
             state.dashboardData.habits.push(action.payload)
         },
@@ -177,7 +182,7 @@ export const {
     toggleTask, addTask,
     toggleGymDay,
     setFocus, setReflections,
-    setCreateGoal, setUpdateGoalStatus, setDeleteGoal,
+    setCreateGoal, setUpdateGoalStatus, setDeleteGoal, setEditGoal,
     setAddHabit, setDeleteHabit, toggleHabitday,
     setAddReadingItem, setDeleteReadingItem, setUpdateReadingItem,
     setAddCountdown, setDeleteCountdown, setEditCountdown,

@@ -29,7 +29,7 @@ const CATEGORY_CFG: Record<string, TagStyle> = {
 
 const fallbackTag: TagStyle = { bg: 'var(--elevated)', color: 'var(--text-2)', border: 'var(--border)' }
 
-const GoalCard = ({ goal }: { goal: Goal }) => {
+const GoalCard = ({ goal, onEdit }: { goal: Goal; onEdit: (g: Goal) => void }) => {
   const dispatch = useDispatch<AppDispatch>()
   const { attributes, listeners, setNodeRef } = useDraggable({ id: goal.id })
 
@@ -52,17 +52,23 @@ const GoalCard = ({ goal }: { goal: Goal }) => {
         </div>
         {goal.dueDate && <div className="text-[11px] text-[var(--text-3)] mt-2">Due {goal.dueDate}</div>}
       </div>
-      <button
-        onClick={() => dispatch(setDeleteGoal(goal.id))}
-        className="mt-3 w-full bg-transparent border border-[var(--border)] hover:border-[#f87171] hover:text-[#f87171] rounded-lg py-1.5 text-xs text-[var(--text-3)] cursor-pointer transition-all duration-150"
-      >Delete</button>
+      <div className="flex gap-2 mt-3">
+        <button
+          onClick={() => onEdit(goal)}
+          className="flex-1 bg-transparent border border-[var(--border)] hover:border-[var(--accent)] hover:text-[var(--accent)] rounded-lg py-1.5 text-xs text-[var(--text-3)] cursor-pointer transition-all duration-150"
+        >Edit</button>
+        <button
+          onClick={() => dispatch(setDeleteGoal(goal.id))}
+          className="flex-1 bg-transparent border border-[var(--border)] hover:border-[#f87171] hover:text-[#f87171] rounded-lg py-1.5 text-xs text-[var(--text-3)] cursor-pointer transition-all duration-150"
+        >Delete</button>
+      </div>
     </div>
   )
 }
 
-interface GoalColumnProps { status: Status; goals: Goal[] }
+interface GoalColumnProps { status: Status; goals: Goal[]; onEdit: (g: Goal) => void }
 
-const GoalColumn = ({ status, goals }: GoalColumnProps) => {
+const GoalColumn = ({ status, goals, onEdit }: GoalColumnProps) => {
   const { setNodeRef } = useDroppable({ id: status })
   const cfg = STATUS_CFG[status]
 
@@ -81,7 +87,7 @@ const GoalColumn = ({ status, goals }: GoalColumnProps) => {
         </div>
         <span className="text-[11px] font-bold w-[22px] h-[22px] rounded-full bg-[var(--elevated)] text-[var(--text-3)] flex items-center justify-center">{goals.length}</span>
       </div>
-      {goals.map(g => <GoalCard key={g.id} goal={g} />)}
+      {goals.map(g => <GoalCard key={g.id} goal={g} onEdit={onEdit} />)}
     </div>
   )
 }
