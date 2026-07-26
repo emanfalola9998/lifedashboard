@@ -45,6 +45,7 @@ export interface Habit {
     id: string;
     name: string;
     completedDays: string[];
+    targetDays: number;
 }
 
 export type ReadingStatus = "Want to Read" | "Reading" | "Finished"

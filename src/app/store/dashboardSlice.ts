@@ -33,6 +33,7 @@ const dashboardSlice = createSlice({
                 reflections: action.payload.reflections ?? [],
                 dailyIntention: action.payload.dailyIntention ?? "",
                 reminders: action.payload.reminders ?? [],
+                habits: (action.payload.habits ?? []).map(h => ({ ...h, targetDays: h.targetDays ?? 7 })),
             }
         },
 
