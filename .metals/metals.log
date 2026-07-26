@@ -1,0 +1,370 @@
+2026.06.02 19:29:40 INFO  Started: Metals version 1.6.7 in folders 'C:\Users\emman\Developer\life-dashboard' for client Visual Studio Code 1.119.0.
+2026.06.02 19:29:43 INFO  Memory monitor started
+2026.06.02 19:29:44 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.06.03 20:53:51 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.03 20:53:53 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.7
+Jun 03, 2026 8:53:53 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1
+2026.06.03 20:53:53 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.03 20:54:17 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.03 20:54:59 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\build.sbt. Using presentation compiler with project's scala-library version: 3.3.7
+Jun 03, 2026 8:54:59 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 9
+2026.06.03 20:54:59 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\build.sbt. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.03 20:54:59 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\build.sbt. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.03 20:54:59 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\build.sbt. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.03 20:55:02 INFO  no build target found for c:\Users\emman\Developer\life-dashboard\build.sbt. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.03 20:55:03 WARN  no build target for: c:\Users\emman\Developer\life-dashboard\build.sbt
+2026.06.03 20:55:03 WARN  no build target for: c:\Users\emman\Developer\life-dashboard\build.sc
+2026.06.04 09:35:03 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:04 WARN  Could not find semantic tokens for: file:///C:/Users/emman/Developer/life-dashboard/src/hooks/example.scala
+2026.06.04 09:35:04 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:04 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+Jun 04, 2026 9:35:05 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 30
+2026.06.04 09:35:04 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:05 WARN  no build target for: C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala
+2026.06.04 09:35:05 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:05 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:06 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:06 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:06 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:07 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:07 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:09 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:09 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:09 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:09 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:10 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:10 WARN  no build target for: C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala
+2026.06.04 09:35:10 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:10 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:10 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:10 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:10 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:10 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:11 WARN  no build target for: C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala
+2026.06.04 09:35:11 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:11 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:12 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:12 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+Jun 04, 2026 9:35:12 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 63
+2026.06.04 09:35:12 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:12 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:12 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:13 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:13 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:13 WARN  no build target for: C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala
+2026.06.04 09:35:13 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:13 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:13 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:14 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:14 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:14 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:18 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:27 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:27 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:29 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:29 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:29 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:29 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:31 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:35:32 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:43:03 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:43:07 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:43:08 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:43:08 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:43:09 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:43:09 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:43:09 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:43:11 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:43:12 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:43:12 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:43:13 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:43:13 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:43:45 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:43:45 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:43:45 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:43:45 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:43:47 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:43:47 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+Jun 04, 2026 9:43:47 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 109
+2026.06.04 09:43:47 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:43:47 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:43:48 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:43:48 WARN  no build target for: C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala
+2026.06.04 09:43:47 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:43:54 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:43:58 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:43:58 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:44:00 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:44:00 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:44:00 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:44:00 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:44:01 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:44:01 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:44:01 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:44:01 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:44:04 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:44:04 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:44:04 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:44:04 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:44:05 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:44:06 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:44:06 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:44:06 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:44:06 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:44:06 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:44:06 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:44:06 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:44:06 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:44:07 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:44:07 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:44:10 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:44:10 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:44:12 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:44:15 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:44:15 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:45:00 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:45:03 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:45:03 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:45:06 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:45:08 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:45:08 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:45:09 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:45:09 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:45:12 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:45:12 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:21 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:21 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:21 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:21 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:21 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:22 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:24 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:24 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:24 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:27 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:27 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:28 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:28 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:28 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:28 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:30 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:31 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:32 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:34 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:34 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:35 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:37 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:37 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:37 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:37 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:38 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:38 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:38 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:38 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:40 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:41 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:41 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:42 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:42 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:42 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:45 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:47 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:49 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:51 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:51 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:52 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:52 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:50:54 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:51:08 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:51:21 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:51:21 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:51:23 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:51:23 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:51:24 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:53:32 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:53:32 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:53:34 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:53:37 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:53:37 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:53:38 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:53:40 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:53:40 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:53:40 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:53:42 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:53:46 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:53:52 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:53:52 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:53:53 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:53:54 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:53:54 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:53:56 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:53:56 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:53:56 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:53:57 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 09:53:59 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 11:00:00 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.04 11:00:30 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.05 00:36:11 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.06 12:16:18 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.06 12:16:19 WARN  no build target for: C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala
+Jun 06, 2026 12:16:19 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 346
+2026.06.06 12:16:20 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.06 12:16:20 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+Jun 06, 2026 12:16:20 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 348
+2026.06.06 12:16:20 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.06 12:16:20 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.06 12:16:22 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.06 12:16:23 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.06 12:16:24 WARN  no build target for: C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala
+Jun 06, 2026 12:16:24 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 357
+2026.06.06 12:16:24 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.06 12:16:23 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.06 12:16:23 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+Jun 06, 2026 12:16:24 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 359
+2026.06.06 12:16:23 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+Jun 06, 2026 12:16:24 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 364
+2026.06.06 12:16:26 INFO  no build target found for C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.06.06 13:08:21 INFO  Shutting down server
+2026.06.06 13:08:21 INFO  Memory monitor stopped
+2026.06.06 13:08:21 INFO  shutting down Metals
+2026.06.06 13:08:21 INFO  Exiting server
+2026.06.06 22:35:35 INFO  Started: Metals version 1.6.7 in folders 'C:\Users\emman\Developer\life-dashboard' for client Visual Studio Code 1.123.0.
+2026.06.06 22:35:35 INFO  Memory monitor started
+2026.06.06 22:35:35 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.06.06 22:35:38 INFO  Running List(C:\Users\emman\AppData\Local\Coursier\data\bin\scala-cli.BAT, setup-ide, C:\Users\emman\Developer\life-dashboard)
+2026.06.06 22:35:38 INFO  Attempting to connect to the build server...
+2026.06.06 22:35:38 INFO  Running BSP server List(C:\Users\emman\AppData\Local\Coursier\data\bin\.scala-cli.aux.exe, bsp, --json-options, C:\Users\emman\Developer\life-dashboard\.scala-build\ide-options-v2.json, --json-launcher-options, C:\Users\emman\Developer\life-dashboard\.scala-build\ide-launcher-options.json, --envs-file, C:\Users\emman\Developer\life-dashboard\.scala-build\ide-envs.json, C:\Users\emman\Developer\life-dashboard)
+2026.06.06 22:35:38 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at C:\Users\emman\Developer\life-dashboard\.metals\bsp.trace.json or C:\Users\emman\AppData\Local\scalameta\metals\cache\bsp.trace.json
+2026.06.06 22:35:46 INFO  BSP server: Starting compilation server
+2026.06.06 22:36:00 INFO  time: Connected to build server in 21s
+2026.06.06 22:36:00 INFO  Connected to Build server: scala-cli v1.4.0
+2026.06.06 22:36:00 INFO  time: Imported build in 0.21s
+2026.06.06 22:36:03 INFO  compiling life-dashboard_94f5c41e06 (1 scala source)
+2026.06.06 22:36:08 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.06.06 22:36:09 INFO  time: compiled life-dashboard_94f5c41e06 in 5.37s
+2026.06.06 22:36:09 INFO  compiling life-dashboard_94f5c41e06 (1 scala source)
+2026.06.06 22:36:10 INFO  time: compiled life-dashboard_94f5c41e06 in 1.39s
+2026.06.06 22:36:12 INFO  time: indexed workspace in 11s
+2026.06.06 22:36:15 INFO  compiling life-dashboard_94f5c41e06 (1 scala source)
+2026.06.06 22:36:16 INFO  time: compiled life-dashboard_94f5c41e06 in 1.29s
+Jun 06, 2026 10:36:17 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1
+Jun 06, 2026 10:36:17 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 4
+Jun 06, 2026 10:36:17 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 7
+Jun 06, 2026 10:36:17 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 3
+Jun 06, 2026 10:36:17 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 2
+Jun 08, 2026 3:28:44 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+Jun 09, 2026 9:02:08 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+2026.06.12 17:27:29 INFO  Started: Metals version 1.6.7 in folders 'C:\Users\emman\Developer\life-dashboard' for client Visual Studio Code 1.123.0.
+2026.06.12 17:27:29 INFO  time: initialize in 0.13s
+2026.06.12 17:27:29 INFO  Memory monitor started
+2026.06.12 17:27:38 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.06.12 17:27:38 INFO  Attempting to connect to the build server...
+2026.06.12 17:27:38 INFO  Running BSP server List(C:\Users\emman\AppData\Local\Coursier\data\bin\.scala-cli.aux.exe, bsp, --json-options, C:\Users\emman\Developer\life-dashboard\.scala-build\ide-options-v2.json, --json-launcher-options, C:\Users\emman\Developer\life-dashboard\.scala-build\ide-launcher-options.json, --envs-file, C:\Users\emman\Developer\life-dashboard\.scala-build\ide-envs.json, C:\Users\emman\Developer\life-dashboard)
+2026.06.12 17:27:39 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at C:\Users\emman\Developer\life-dashboard\.metals\bsp.trace.json or C:\Users\emman\AppData\Local\scalameta\metals\cache\bsp.trace.json
+2026.06.12 17:28:00 INFO  BSP server: Starting compilation server
+2026.06.12 17:28:36 INFO  time: Connected to build server in 56s
+2026.06.12 17:28:36 INFO  Connected to Build server: scala-cli v1.4.0
+2026.06.12 17:28:36 INFO  time: Imported build in 0.28s
+2026.06.12 17:28:41 INFO  compiling life-dashboard_94f5c41e06 (1 scala source)
+2026.06.12 17:28:48 INFO  time: compiled life-dashboard_94f5c41e06 in 6.48s
+2026.06.12 17:28:48 INFO  compiling life-dashboard_94f5c41e06 (1 scala source)
+2026.06.12 17:28:48 INFO  time: compiled life-dashboard_94f5c41e06 in 0.75s
+2026.06.12 17:28:52 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.06.12 17:28:52 INFO  time: indexed workspace in 16s
+Jun 12, 2026 5:52:43 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+2026.06.30 16:06:20 INFO  Started: Metals version 1.6.7 in folders 'C:\Users\emman\Developer\life-dashboard' for client Visual Studio Code 1.123.0.
+2026.06.30 16:06:20 INFO  Memory monitor started
+2026.06.30 16:06:25 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.06.30 16:06:25 INFO  Attempting to connect to the build server...
+2026.06.30 16:06:25 INFO  Running BSP server List(C:\Users\emman\AppData\Local\Coursier\data\bin\.scala-cli.aux.exe, bsp, --json-options, C:\Users\emman\Developer\life-dashboard\.scala-build\ide-options-v2.json, --json-launcher-options, C:\Users\emman\Developer\life-dashboard\.scala-build\ide-launcher-options.json, --envs-file, C:\Users\emman\Developer\life-dashboard\.scala-build\ide-envs.json, C:\Users\emman\Developer\life-dashboard)
+2026.06.30 16:06:26 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at C:\Users\emman\Developer\life-dashboard\.metals\bsp.trace.json or C:\Users\emman\AppData\Local\scalameta\metals\cache\bsp.trace.json
+2026.06.30 16:06:41 INFO  BSP server: Starting compilation server
+2026.06.30 16:07:05 INFO  time: Connected to build server in 38s
+2026.06.30 16:07:05 INFO  Connected to Build server: scala-cli v1.4.0
+2026.06.30 16:07:05 INFO  time: Imported build in 0.2s
+2026.06.30 16:07:11 INFO  compiling life-dashboard_94f5c41e06 (1 scala source)
+2026.06.30 16:07:26 INFO  time: compiled life-dashboard_94f5c41e06 in 15s
+2026.06.30 16:07:26 INFO  compiling life-dashboard_94f5c41e06 (1 scala source)
+2026.06.30 16:07:47 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.06.30 16:07:51 INFO  time: compiled life-dashboard_94f5c41e06 in 24s
+2026.06.30 16:07:53 INFO  time: indexed workspace in 47s
+Jul 02, 2026 2:58:29 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1
+Jul 02, 2026 2:58:29 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 4
+Jul 02, 2026 2:58:30 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 6
+2026.07.02 14:58:36 INFO  compiling life-dashboard_94f5c41e06 (1 scala source)
+2026.07.02 14:58:36 INFO  time: compiled life-dashboard_94f5c41e06 in 0.68s
+Jul 02, 2026 3:30:25 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 12
+Jul 02, 2026 3:30:25 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 13
+Jul 02, 2026 7:47:49 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 20
+Jul 02, 2026 7:47:49 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 23
+Jul 02, 2026 7:47:49 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 26
+2026.07.02 19:47:54 INFO  time: Imported build in 0.41s
+2026.07.02 19:47:58 INFO  time: indexed workspace in 3.44s
+2026.07.02 19:47:58 WARN  no build target for: C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala
+2026.07.02 19:48:31 INFO  compiling life-dashboard_94f5c41e06 (1 scala source)
+2026.07.02 19:48:31 INFO  time: compiled life-dashboard_94f5c41e06 in 0.53s
+2026.07.02 19:48:31 INFO  compiling life-dashboard_94f5c41e06 (1 scala source)
+2026.07.02 19:48:32 INFO  time: compiled life-dashboard_94f5c41e06 in 0.55s
+2026.07.02 19:48:33 INFO  time: indexed workspace in 2.15s
+2026.07.02 19:48:35 INFO  compiling life-dashboard_94f5c41e06 (1 scala source)
+2026.07.02 19:48:35 INFO  time: compiled life-dashboard_94f5c41e06 in 0.29s
+2026.07.02 19:48:58 INFO  time: indexed workspace in 1.22s
+2026.07.02 19:48:58 WARN  no build target for: C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala
+2026.07.02 19:49:00 INFO  compiling life-dashboard_94f5c41e06 (1 scala source)
+2026.07.02 19:49:00 INFO  time: compiled life-dashboard_94f5c41e06 in 0.43s
+2026.07.02 19:49:00 INFO  compiling life-dashboard_94f5c41e06 (1 scala source)
+2026.07.02 19:49:00 INFO  time: compiled life-dashboard_94f5c41e06 in 0.41s
+2026.07.02 19:49:02 INFO  time: indexed workspace in 1.77s
+2026.07.02 19:49:03 INFO  compiling life-dashboard_94f5c41e06 (1 scala source)
+2026.07.02 19:49:03 INFO  time: compiled life-dashboard_94f5c41e06 in 0.23s
+Jul 02, 2026 7:50:09 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 31
+Jul 02, 2026 7:50:09 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 35
+2026.07.02 19:50:14 INFO  time: indexed workspace in 1.23s
+2026.07.02 19:50:14 WARN  no build target for: C:\Users\emman\Developer\life-dashboard\src\hooks\example.scala
+Jul 04, 2026 10:06:14 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+Jul 04, 2026 10:07:46 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+Jul 07, 2026 5:20:46 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+2026.07.23 10:18:32 INFO  Started: Metals version 1.6.7 in folders 'C:\Users\emman\Developer\life-dashboard' for client Visual Studio Code 1.123.0.
+2026.07.23 10:18:32 INFO  time: initialize in 0.19s
+2026.07.23 10:18:32 INFO  Memory monitor started
+2026.07.23 10:18:38 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.07.23 10:18:38 INFO  Attempting to connect to the build server...
+2026.07.23 10:18:38 INFO  Running BSP server List(C:\Users\emman\AppData\Local\Coursier\data\bin\.scala-cli.aux.exe, bsp, --json-options, C:\Users\emman\Developer\life-dashboard\.scala-build\ide-options-v2.json, --json-launcher-options, C:\Users\emman\Developer\life-dashboard\.scala-build\ide-launcher-options.json, --envs-file, C:\Users\emman\Developer\life-dashboard\.scala-build\ide-envs.json, C:\Users\emman\Developer\life-dashboard)
+2026.07.23 10:18:40 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at C:\Users\emman\Developer\life-dashboard\.metals\bsp.trace.json or C:\Users\emman\AppData\Local\scalameta\metals\cache\bsp.trace.json
+2026.07.23 10:19:06 INFO  BSP server: Starting compilation server
+2026.07.23 10:19:39 INFO  time: Connected to build server in 1m
+2026.07.23 10:19:39 INFO  Connected to Build server: scala-cli v1.4.0
+2026.07.23 10:19:39 INFO  time: Imported build in 0.26s
+2026.07.23 10:19:59 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.07.23 10:20:00 INFO  time: indexed workspace in 20s
