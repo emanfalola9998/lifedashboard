@@ -69,7 +69,7 @@ const Reflections = () => {
               <div className="bg-[var(--raised)] border border-[var(--border)] rounded-[10px] px-3.5 py-3">
                 <div className="flex justify-between items-start gap-3">
                   <p className="text-[13px] text-[var(--text)] leading-[1.6] m-0 whitespace-pre-wrap">
-                    {expandedId === entry.id ? entry.text : entry.text.substring(0, 20)}
+                    {expandedId === entry.id ? entry.text : entry.text.split('\n')[0]}
                   </p>
                   <button
                     onClick={e => { e.stopPropagation(); dispatch(deleteReflection(entry.id)) }}

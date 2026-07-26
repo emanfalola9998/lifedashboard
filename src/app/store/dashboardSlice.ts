@@ -3,6 +3,15 @@ import { DashboardData, Goal, Habit, Task, ReadingItem, ReadingStatus, Status, C
 
 const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
+function getCurrentWeekMonday(): string {
+    const today = new Date()
+    const day = today.getDay()           // 0=Sun, 1=Mon … 6=Sat
+    const diff = day === 0 ? -6 : 1 - day
+    const monday = new Date(today)
+    monday.setDate(today.getDate() + diff)
+    return monday.toISOString().substring(0, 10)
+}
+
 const initialState = {
     dashboardData: {
         weekData: {
@@ -34,7 +43,11 @@ const dashboardSlice = createSlice({
                 reflections: action.payload.reflections ?? [],
                 dailyIntention: action.payload.dailyIntention ?? "",
                 reminders: action.payload.reminders ?? [],
-                habits: (action.payload.habits ?? []).map(h => ({ ...h, targetDays: h.targetDays ?? 7 })),
+                habits: (action.payload.habits ?? []).map(h => {
+                    const monday = getCurrentWeekMonday()
+                    const stale  = (h.weekOf ?? '') !== monday
+                    return { ...h, targetDays: h.targetDays ?? 7, weekOf: monday, completedDays: stale ? [] : h.completedDays }
+                }),
                 appleCalendarUrl: action.payload.appleCalendarUrl ?? "",
             }
         },
@@ -95,6 +108,8 @@ const dashboardSlice = createSlice({
         toggleHabitday: (state, action: PayloadAction<{ id: string; day: string }>) => {
             const habit = state.dashboardData.habits.find(h => h.id === action.payload.id)
             if (!habit) return
+            const monday = getCurrentWeekMonday()
+            if (habit.weekOf !== monday) { habit.completedDays = []; habit.weekOf = monday }
             const has = habit.completedDays.includes(action.payload.day)
             if (has) habit.completedDays = habit.completedDays.filter(d => d !== action.payload.day)
             else habit.completedDays.push(action.payload.day)

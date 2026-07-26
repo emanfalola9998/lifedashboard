@@ -71,10 +71,10 @@ const CountdownTimer = () => {
               <div className="flex items-center gap-4">
                 <div className="text-right">
                   <div className="text-[26px] font-bold leading-none tabular-nums" style={{ color: daysColor(d) }}>
-                    {d < 0 ? 0 : d}
+                    {d}
                   </div>
                   <div className="text-[10px] font-semibold tracking-[0.06em] uppercase text-[var(--text-3)] mt-0.5">
-                    {d < 0 ? 'passed' : 'days'}
+                    {d < 0 ? 'days ago' : 'days'}
                   </div>
                 </div>
                 <button

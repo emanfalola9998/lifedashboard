@@ -12,9 +12,18 @@ const HabitTracker = () => {
   const dispatch = useDispatch()
   const { dashboardData } = useDashboard()
 
+  const getCurrentWeekMonday = () => {
+    const today = new Date()
+    const day   = today.getDay()
+    const diff  = day === 0 ? -6 : 1 - day
+    const mon   = new Date(today)
+    mon.setDate(today.getDate() + diff)
+    return mon.toISOString().substring(0, 10)
+  }
+
   const add = () => {
     if (!newText.trim()) return
-    dispatch(setAddHabit({ id: crypto.randomUUID(), name: newText.trim(), completedDays: [], targetDays }))
+    dispatch(setAddHabit({ id: crypto.randomUUID(), name: newText.trim(), completedDays: [], targetDays, weekOf: getCurrentWeekMonday() }))
     setNewText("")
     setTargetDays(7)
   }

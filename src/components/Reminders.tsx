@@ -102,7 +102,7 @@ const Reminders = () => {
                   <span className="text-[10px] text-[var(--text-3)] uppercase tracking-[0.06em]">{RECURRENCE_LABELS[r.recurrence]}</span>
                   <span className="text-[10px] text-[var(--text-3)]">·</span>
                   <span className="text-[11px]" style={{ color }}>
-                    {days < 0 ? 'Overdue' : days === 0 ? 'Due today' : `${days}d`}
+                    {days === 0 ? 'Due today' : `${days}d`}
                   </span>
                 </div>
               </button>
