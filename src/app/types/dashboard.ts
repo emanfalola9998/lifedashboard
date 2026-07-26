@@ -14,6 +14,7 @@ export interface DashboardData {
     reflections: ReflectionEntry[];
     dailyIntention: string;
     reminders: Reminder[];
+    appleCalendarUrl?: string;
 }
 
 export interface Task {

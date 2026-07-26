@@ -19,6 +19,7 @@ const initialState = {
         reflections: [] as ReflectionEntry[],
         dailyIntention: "",
         reminders: [] as Reminder[],
+        appleCalendarUrl: "",
     },
 }
 
@@ -34,6 +35,7 @@ const dashboardSlice = createSlice({
                 dailyIntention: action.payload.dailyIntention ?? "",
                 reminders: action.payload.reminders ?? [],
                 habits: (action.payload.habits ?? []).map(h => ({ ...h, targetDays: h.targetDays ?? 7 })),
+                appleCalendarUrl: action.payload.appleCalendarUrl ?? "",
             }
         },
 
@@ -164,6 +166,10 @@ const dashboardSlice = createSlice({
             state.dashboardData.reflections = state.dashboardData.reflections.filter(r => r.id !== action.payload)
         },
 
+        setAppleCalendarUrl: (state, action: PayloadAction<string>) => {
+            state.dashboardData.appleCalendarUrl = action.payload
+        },
+
         addScheduleItem: (state, action: PayloadAction<{ day: string; text: string }>) => {
             const { day, text } = action.payload
             if (!state.dashboardData.weekSchedule[day]) state.dashboardData.weekSchedule[day] = []
@@ -190,6 +196,7 @@ export const {
     addScheduleItem, removeScheduleItem,
     addReflection, deleteReflection,
     addReminder, deleteReminder, markReminderPaid, editReminder,
+    setAppleCalendarUrl,
 } = dashboardSlice.actions
 
 export default dashboardSlice.reducer

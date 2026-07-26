@@ -12,6 +12,7 @@ import WeeklySchedule from '@/components/WeeklySchedule'
 import PomodoroTimer from '@/components/PomodoroTimer'
 import DailyIntention from '@/components/DailyIntention'
 import GoogleCalendar from '@/components/GoogleCalendar'
+import AppleCalendar from '@/components/AppleCalendar'
 import Reminders from '@/components/Reminders'
 
 function getGreeting() {
@@ -126,7 +127,10 @@ export default function Home() {
           </Section>
 
           <Section label="Calendar" emoji="📆">
-            <GoogleCalendar />
+            <div className="flex flex-col gap-3">
+              <GoogleCalendar />
+              <AppleCalendar />
+            </div>
           </Section>
 
           <Section label="Goals" emoji="🎯">
