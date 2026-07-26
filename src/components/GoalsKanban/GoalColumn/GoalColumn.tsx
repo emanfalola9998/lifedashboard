@@ -34,33 +34,46 @@ const GoalCard = ({ goal, onEdit }: { goal: Goal; onEdit: (g: Goal) => void }) =
   const { attributes, listeners, setNodeRef } = useDraggable({ id: goal.id })
 
   return (
-    <div ref={setNodeRef} className="bg-[var(--surface)] border border-[var(--border)] rounded-xl px-4 py-3.5 mb-2.5">
+    <div
+      ref={setNodeRef}
+      className="bg-[var(--surface)] border border-[var(--border)] rounded-lg px-2.5 py-2 mb-1.5 group"
+    >
+      {/* drag handle area */}
       <div {...listeners} {...attributes} className="cursor-grab">
-        <div className="text-[13px] font-medium text-[var(--text)] leading-[1.5] mb-2.5">{goal.text}</div>
-        <div className="flex gap-1.5 flex-wrap">
+        <div className="flex items-start justify-between gap-1.5">
+          <div className="text-[12px] font-medium text-[var(--text)] leading-[1.4] flex-1 min-w-0">{goal.text}</div>
+          {/* action buttons — visible on hover */}
+          <div className="flex gap-1 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-150" onClick={e => e.stopPropagation()}>
+            <button
+              onPointerDown={e => e.stopPropagation()}
+              onClick={() => onEdit(goal)}
+              className="text-[10px] px-1.5 py-0.5 rounded cursor-pointer text-[var(--text-3)] hover:text-[var(--accent)] bg-transparent border-none transition-colors duration-150"
+              title="Edit"
+            >✎</button>
+            <button
+              onPointerDown={e => e.stopPropagation()}
+              onClick={() => dispatch(setDeleteGoal(goal.id))}
+              className="text-[10px] px-1.5 py-0.5 rounded cursor-pointer text-[var(--text-3)] hover:text-[#f87171] bg-transparent border-none transition-colors duration-150"
+              title="Delete"
+            >×</button>
+          </div>
+        </div>
+
+        {/* category + due date row */}
+        <div className="flex items-center gap-1.5 mt-1.5 flex-wrap">
           {goal.category && (() => {
             const s = CATEGORY_CFG[goal.category!] ?? fallbackTag
             return (
               <span
-                className="text-[10px] font-bold px-2 py-0.5 rounded-full"
+                className="text-[9px] font-bold px-1.5 py-px rounded-full leading-none"
                 style={{ background: s.bg, color: s.color, border: `1px solid ${s.border}` }}
-              >
-                {goal.category}
-              </span>
+              >{goal.category}</span>
             )
           })()}
+          {goal.dueDate && (
+            <span className="text-[10px] text-[var(--text-3)]">· {goal.dueDate}</span>
+          )}
         </div>
-        {goal.dueDate && <div className="text-[11px] text-[var(--text-3)] mt-2">Due {goal.dueDate}</div>}
-      </div>
-      <div className="flex gap-2 mt-3">
-        <button
-          onClick={() => onEdit(goal)}
-          className="flex-1 bg-transparent border border-[var(--border)] hover:border-[var(--accent)] hover:text-[var(--accent)] rounded-lg py-1.5 text-xs text-[var(--text-3)] cursor-pointer transition-all duration-150"
-        >Edit</button>
-        <button
-          onClick={() => dispatch(setDeleteGoal(goal.id))}
-          className="flex-1 bg-transparent border border-[var(--border)] hover:border-[#f87171] hover:text-[#f87171] rounded-lg py-1.5 text-xs text-[var(--text-3)] cursor-pointer transition-all duration-150"
-        >Delete</button>
       </div>
     </div>
   )
@@ -73,21 +86,29 @@ const GoalColumn = ({ status, goals, onEdit }: GoalColumnProps) => {
   const cfg = STATUS_CFG[status]
 
   return (
-    <div ref={setNodeRef} className="flex-1 bg-[var(--raised)] border border-[var(--border)] rounded-[14px] p-4 min-h-[280px]">
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-2">
+    <div className="flex-1 flex flex-col bg-[var(--raised)] border border-[var(--border)] rounded-[14px] p-3 min-w-0">
+      {/* column header */}
+      <div className="flex items-center justify-between mb-3 shrink-0">
+        <div className="flex items-center gap-1.5">
           <span
-            className="w-2 h-2 rounded-full inline-block"
-            style={{ background: cfg.dot, boxShadow: `0 0 6px ${cfg.dot}` }}
+            className="w-1.5 h-1.5 rounded-full inline-block shrink-0"
+            style={{ background: cfg.dot, boxShadow: `0 0 5px ${cfg.dot}` }}
           />
           <span
-            className="text-xs font-bold px-2.5 py-[3px] rounded-full"
+            className="text-[10px] font-bold px-2 py-[2px] rounded-full"
             style={{ background: cfg.bg, color: cfg.color, border: `1px solid ${cfg.border}` }}
           >{status}</span>
         </div>
-        <span className="text-[11px] font-bold w-[22px] h-[22px] rounded-full bg-[var(--elevated)] text-[var(--text-3)] flex items-center justify-center">{goals.length}</span>
+        <span className="text-[10px] font-bold w-[18px] h-[18px] rounded-full bg-[var(--elevated)] text-[var(--text-3)] flex items-center justify-center">{goals.length}</span>
       </div>
-      {goals.map(g => <GoalCard key={g.id} goal={g} onEdit={onEdit} />)}
+
+      {/* scrollable card list */}
+      <div ref={setNodeRef} className="flex-1 overflow-y-auto min-h-[200px] max-h-[480px] pr-0.5">
+        {goals.map(g => <GoalCard key={g.id} goal={g} onEdit={onEdit} />)}
+        {goals.length === 0 && (
+          <div className="text-center pt-8 text-[11px] text-[var(--text-3)]">No goals</div>
+        )}
+      </div>
     </div>
   )
 }
