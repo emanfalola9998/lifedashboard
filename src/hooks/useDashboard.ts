@@ -38,6 +38,7 @@ export function useDashboard() {
                     reflections: data.reflections ?? [],
                     dailyIntention: data.dailyIntention ?? "",
                     reminders: data.reminders ?? [],
+                    budget: data.budget ?? { salary: 0, items: [] },
                 }))
             } catch (error) { console.log("error: ", error) }
         }

@@ -14,6 +14,7 @@ import DailyIntention from '@/components/DailyIntention'
 import GoogleCalendar from '@/components/GoogleCalendar'
 import AppleCalendar from '@/components/AppleCalendar'
 import Reminders from '@/components/Reminders'
+import Budget from '@/components/Budget'
 
 function getGreeting() {
   const h = new Date().getHours()
@@ -135,6 +136,10 @@ export default function Home() {
 
           <Section label="Goals" emoji="🎯">
             <GoalsKanban />
+          </Section>
+
+          <Section label="Budget" emoji="💷">
+            <Budget />
           </Section>
 
           <Section label="Habits & Reading" emoji="📚">

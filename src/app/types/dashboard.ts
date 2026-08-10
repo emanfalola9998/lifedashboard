@@ -15,6 +15,7 @@ export interface DashboardData {
     dailyIntention: string;
     reminders: Reminder[];
     appleCalendarUrl?: string;
+    budget: Budget;
 }
 
 export interface Task {
@@ -79,4 +80,18 @@ export interface Reminder {
 
 export type WeekSchedule = {
     [day: string]: string[];
+}
+
+export type BudgetCategory = "Bills" | "Investment" | "Subscription" | "Insurance" | "Food" | "Transport" | "Other"
+
+export interface BudgetItem {
+    id: string
+    name: string
+    amount: number
+    category: BudgetCategory
+}
+
+export interface Budget {
+    salary: number
+    items: BudgetItem[]
 }

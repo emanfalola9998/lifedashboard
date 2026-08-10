@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { DashboardData, Goal, Habit, Task, ReadingItem, ReadingStatus, Status, Category, Countdown, WeekSchedule, ReflectionEntry, Reminder, ReminderRecurrence } from "../types/dashboard"
+import { DashboardData, Goal, Habit, Task, ReadingItem, ReadingStatus, Status, Category, Countdown, WeekSchedule, ReflectionEntry, Reminder, ReminderRecurrence, Budget, BudgetItem } from "../types/dashboard"
 
 const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
@@ -29,6 +29,7 @@ const initialState = {
         dailyIntention: "",
         reminders: [] as Reminder[],
         appleCalendarUrl: "",
+        budget: { salary: 0, items: [] } as Budget,
     },
 }
 
@@ -49,6 +50,7 @@ const dashboardSlice = createSlice({
                     return { ...h, targetDays: h.targetDays ?? 7, weekOf: monday, completedDays: stale ? [] : h.completedDays }
                 }),
                 appleCalendarUrl: action.payload.appleCalendarUrl ?? "",
+                budget: action.payload.budget ?? { salary: 0, items: [] },
             }
         },
 
@@ -185,6 +187,23 @@ const dashboardSlice = createSlice({
             state.dashboardData.appleCalendarUrl = action.payload
         },
 
+        setBudgetSalary: (state, action: PayloadAction<number>) => {
+            state.dashboardData.budget.salary = action.payload
+        },
+
+        addBudgetItem: (state, action: PayloadAction<BudgetItem>) => {
+            state.dashboardData.budget.items.push(action.payload)
+        },
+
+        editBudgetItem: (state, action: PayloadAction<BudgetItem>) => {
+            const item = state.dashboardData.budget.items.find(i => i.id === action.payload.id)
+            if (item) { item.name = action.payload.name; item.amount = action.payload.amount; item.category = action.payload.category }
+        },
+
+        deleteBudgetItem: (state, action: PayloadAction<string>) => {
+            state.dashboardData.budget.items = state.dashboardData.budget.items.filter(i => i.id !== action.payload)
+        },
+
         addScheduleItem: (state, action: PayloadAction<{ day: string; text: string }>) => {
             const { day, text } = action.payload
             if (!state.dashboardData.weekSchedule[day]) state.dashboardData.weekSchedule[day] = []
@@ -212,6 +231,7 @@ export const {
     addReflection, deleteReflection,
     addReminder, deleteReminder, markReminderPaid, editReminder,
     setAppleCalendarUrl,
+    setBudgetSalary, addBudgetItem, editBudgetItem, deleteBudgetItem,
 } = dashboardSlice.actions
 
 export default dashboardSlice.reducer
