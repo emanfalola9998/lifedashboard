@@ -103,10 +103,10 @@ const Trading212 = () => {
     setConnected(false); setPositions([]); setCash(null)
   }
 
-  const totalValue    = cash?.total ?? 0
-  const totalPpl      = cash?.ppl   ?? 0
-  const invested      = cash?.invested ?? 0
-  const totalPct      = invested > 0 ? (totalPpl / invested) * 100 : 0
+  const invested   = positions.reduce((s, p) => s + p.quantity * p.averagePrice, 0)
+  const totalValue = positions.reduce((s, p) => s + p.value, 0)
+  const totalPpl   = positions.reduce((s, p) => s + p.ppl, 0)
+  const totalPct   = invested > 0 ? (totalPpl / invested) * 100 : 0
 
   const sortedPositions = [...positions].sort((a, b) => b.value - a.value)
 
