@@ -37,6 +37,7 @@ const Trading212 = () => {
 
   const [connected, setConnected]   = useState<boolean | null>(null)
   const [loading, setLoading]       = useState(true)
+  const [apiIdDraft, setApiIdDraft]   = useState('')
   const [apiKeyDraft, setApiKeyDraft] = useState('')
   const [connecting, setConnecting] = useState(false)
   const [connectError, setConnectError] = useState('')
@@ -78,17 +79,17 @@ const Trading212 = () => {
   }
 
   const connect = async () => {
-    if (!apiKeyDraft.trim()) return
+    if (!apiIdDraft.trim() || !apiKeyDraft.trim()) return
     setConnecting(true); setConnectError('')
     try {
       const res  = await fetch(`${BACKEND}/trading212/connect/${userId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ apiKey: apiKeyDraft.trim() }),
+        body: JSON.stringify({ apiId: apiIdDraft.trim(), apiKey: apiKeyDraft.trim() }),
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error ?? 'Failed to connect')
-      setConnected(true); setApiKeyDraft('')
+      setConnected(true); setApiIdDraft(''); setApiKeyDraft('')
       loadPortfolio()
     } catch (e: any) {
       setConnectError(e.message ?? 'Connection failed')
@@ -138,29 +139,38 @@ const Trading212 = () => {
       ) : !connected ? (
         <div>
           <p className="text-[12px] text-[var(--text-3)] mb-4 leading-relaxed">
-            In Trading 212: <strong className="text-[var(--text-2)]">Settings → API → Generate Key</strong>. Enable <strong className="text-[var(--text-2)]">Account data</strong>, set IP to <strong className="text-[var(--text-2)]">Unrestricted</strong>. For ISA, generate the key from within your ISA tab. Live and Practice accounts are auto-detected.
+            In Trading 212: <strong className="text-[var(--text-2)]">Settings → API → Generate Key</strong>. Enable <strong className="text-[var(--text-2)]">Account data</strong>, set IP to <strong className="text-[var(--text-2)]">Unrestricted</strong>. For ISA, generate the key from within your ISA tab. Enter both the <strong className="text-[var(--text-2)]">ID</strong> and <strong className="text-[var(--text-2)]">Key</strong> shown after generation.
           </p>
-          <div className="flex gap-2 mb-2">
-            <div className="flex-1 relative">
-              <input
-                type={showKey ? 'text' : 'password'}
-                placeholder="Paste your API key..."
-                value={apiKeyDraft}
-                onChange={e => setApiKeyDraft(e.target.value)}
-                onKeyDown={e => e.key === 'Enter' && connect()}
-                className="w-full bg-[var(--raised)] border border-[var(--border)] rounded-[10px] px-3.5 py-2.5 text-[13px] text-[var(--text)] outline-none pr-10"
-              />
+          <div className="flex flex-col gap-2 mb-2">
+            <input
+              type="text"
+              placeholder="API ID (e.g. 38177224ZwxnMTqs…)"
+              value={apiIdDraft}
+              onChange={e => setApiIdDraft(e.target.value)}
+              className="w-full bg-[var(--raised)] border border-[var(--border)] rounded-[10px] px-3.5 py-2.5 text-[13px] text-[var(--text)] outline-none"
+            />
+            <div className="flex gap-2">
+              <div className="flex-1 relative">
+                <input
+                  type={showKey ? 'text' : 'password'}
+                  placeholder="API Key"
+                  value={apiKeyDraft}
+                  onChange={e => setApiKeyDraft(e.target.value)}
+                  onKeyDown={e => e.key === 'Enter' && connect()}
+                  className="w-full bg-[var(--raised)] border border-[var(--border)] rounded-[10px] px-3.5 py-2.5 text-[13px] text-[var(--text)] outline-none pr-10"
+                />
+                <button
+                  onClick={() => setShowKey(s => !s)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[11px] text-[var(--text-3)] bg-transparent border-none cursor-pointer"
+                >{showKey ? 'Hide' : 'Show'}</button>
+              </div>
               <button
-                onClick={() => setShowKey(s => !s)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-[11px] text-[var(--text-3)] bg-transparent border-none cursor-pointer"
-              >{showKey ? 'Hide' : 'Show'}</button>
+                onClick={connect}
+                disabled={connecting || !apiIdDraft.trim() || !apiKeyDraft.trim()}
+                className="px-5 py-2.5 rounded-[10px] text-[13px] font-semibold border-none cursor-pointer transition-all"
+                style={{ background: 'var(--accent)', color: '#fff', opacity: connecting || !apiIdDraft.trim() || !apiKeyDraft.trim() ? 0.6 : 1 }}
+              >{connecting ? 'Connecting…' : 'Connect'}</button>
             </div>
-            <button
-              onClick={connect}
-              disabled={connecting || !apiKeyDraft.trim()}
-              className="px-5 py-2.5 rounded-[10px] text-[13px] font-semibold border-none cursor-pointer transition-all"
-              style={{ background: 'var(--accent)', color: '#fff', opacity: connecting || !apiKeyDraft.trim() ? 0.6 : 1 }}
-            >{connecting ? 'Connecting…' : 'Connect'}</button>
           </div>
           {connectError && <div className="text-[12px] text-[#f87171] mt-1">{connectError}</div>}
         </div>
