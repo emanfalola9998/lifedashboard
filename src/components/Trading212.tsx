@@ -138,7 +138,7 @@ const Trading212 = () => {
       ) : !connected ? (
         <div>
           <p className="text-[12px] text-[var(--text-3)] mb-4 leading-relaxed">
-            In Trading 212: <strong className="text-[var(--text-2)]">Settings → API → Generate Key</strong>. Enable <strong className="text-[var(--text-2)]">Account data</strong> and set IP restrictions to <strong className="text-[var(--text-2)]">Unrestricted</strong>. Paste the key below.
+            In Trading 212: <strong className="text-[var(--text-2)]">Settings → API → Generate Key</strong>. Enable <strong className="text-[var(--text-2)]">Account data</strong>, set IP to <strong className="text-[var(--text-2)]">Unrestricted</strong>. For ISA, generate the key from within your ISA tab. Live and Practice accounts are auto-detected.
           </p>
           <div className="flex gap-2 mb-2">
             <div className="flex-1 relative">
