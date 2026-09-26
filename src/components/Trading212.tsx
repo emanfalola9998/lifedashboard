@@ -51,6 +51,12 @@ const Trading212 = () => {
     checkStatus()
   }, [userId])
 
+  useEffect(() => {
+    if (!connected) return
+    const id = setInterval(loadPortfolio, 30_000)
+    return () => clearInterval(id)
+  }, [connected])
+
   const checkStatus = async () => {
     try {
       const res  = await fetch(`${BACKEND}/trading212/status/${userId}`)
