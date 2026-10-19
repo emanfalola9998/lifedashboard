@@ -3,7 +3,8 @@ import { authOptions } from '@/lib/auth'
 import { NextRequest, NextResponse } from 'next/server'
 
 const BACKEND = process.env.API_URL ?? 'http://localhost:9000'
-const SECRET  = process.env.INTERNAL_API_SECRET ?? 'dev-secret-change-in-prod'
+const SECRET  = process.env.INTERNAL_API_SECRET
+if (!SECRET) throw new Error('INTERNAL_API_SECRET env var is not set')
 
 async function handler(
   req: NextRequest,
@@ -32,7 +33,16 @@ async function handler(
   }
 
   const encodedPath = path.map(encodeURIComponent).join('/')
-  const url = `${BACKEND}/${encodedPath}${req.nextUrl.search}`
+
+  // Force userId on the OAuth redirect so an attacker cannot link Google Calendar to a victim's account
+  let search = req.nextUrl.search
+  if (pathStr === 'auth/google/redirect') {
+    const qs = new URLSearchParams(req.nextUrl.searchParams)
+    qs.set('userId', session.user.id)
+    search = `?${qs.toString()}`
+  }
+
+  const url = `${BACKEND}/${encodedPath}${search}`
 
   const headers: Record<string, string> = {
     'X-Internal-Secret': SECRET,
