@@ -31,17 +31,25 @@ async function handler(
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
-  const url = `${BACKEND}/${path.join('/')}${req.nextUrl.search}`
+  const encodedPath = path.map(encodeURIComponent).join('/')
+  const url = `${BACKEND}/${encodedPath}${req.nextUrl.search}`
 
   const headers: Record<string, string> = {
     'X-Internal-Secret': SECRET,
     'Content-Type': 'application/json',
+    'X-User-Id': session.user.id,
   }
 
   const body =
     req.method !== 'GET' && req.method !== 'HEAD' ? await req.text() : undefined
 
-  const upstream = await fetch(url, { method: req.method, headers, body })
+  const upstream = await fetch(url, { method: req.method, headers, body, redirect: 'manual' })
+
+  // Pass redirects through (e.g. Google OAuth flow)
+  if (upstream.status >= 300 && upstream.status < 400) {
+    return NextResponse.redirect(upstream.headers.get('Location') ?? '/', upstream.status)
+  }
+
   const text = await upstream.text()
 
   return new NextResponse(text, {
