@@ -49,11 +49,15 @@ export function useDashboard() {
     useEffect(() => {
         if (!hasLoaded.current || !userId) return
 
-        fetch(`${BASE_URL}/dashboard/save/${userId}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(dashboardData)
-        }).catch(() => {})
+        const timer = setTimeout(() => {
+            fetch(`${BASE_URL}/dashboard/save/${userId}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(dashboardData)
+            }).catch(() => {})
+        }, 1500)
+
+        return () => clearTimeout(timer)
     }, [dashboardData])
 
     return { dashboardData }
