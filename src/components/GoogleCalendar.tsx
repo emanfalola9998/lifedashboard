@@ -85,8 +85,11 @@ const GoogleCalendar = () => {
     setEventsLoading(true)
     try {
       const res  = await fetch(`${BACKEND}/calendar/events/${userId}`)
+      if (!res.ok) { setEventsLoading(false); return }
       const data = await res.json()
       setEvents(data.events ?? [])
+    } catch {
+      // network error or non-JSON body — leave events as-is
     } finally {
       setEventsLoading(false)
     }

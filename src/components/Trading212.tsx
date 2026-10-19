@@ -74,10 +74,12 @@ const Trading212 = () => {
     setDataLoading(true)
     try {
       const res  = await fetch(`${BACKEND}/trading212/portfolio/${userId}`)
+      if (!res.ok) return
       const data = await res.json()
-      if (!res.ok) throw new Error(data.error ?? JSON.stringify(data))
       setPositions(data.positions ?? [])
       setCash(data.cash ?? null)
+    } catch {
+      // network error or non-JSON body — leave state as-is
     } finally {
       setDataLoading(false)
     }
