@@ -75,7 +75,6 @@ const Trading212 = () => {
     try {
       const res  = await fetch(`${BACKEND}/trading212/portfolio/${userId}`)
       const data = await res.json()
-      console.log('[T212 raw]', data.rawPositions)
       if (!res.ok) throw new Error(data.error ?? JSON.stringify(data))
       setPositions(data.positions ?? [])
       setCash(data.cash ?? null)
