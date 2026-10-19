@@ -4,7 +4,6 @@ import { NextRequest, NextResponse } from 'next/server'
 
 const BACKEND = process.env.API_URL ?? 'http://localhost:9000'
 const SECRET  = process.env.INTERNAL_API_SECRET
-if (!SECRET) throw new Error('INTERNAL_API_SECRET env var is not set')
 
 async function handler(
   req: NextRequest,
@@ -44,8 +43,10 @@ async function handler(
 
   const url = `${BACKEND}/${encodedPath}${search}`
 
+  if (!SECRET) return NextResponse.json({ error: 'Server misconfiguration' }, { status: 500 })
+
   const headers: Record<string, string> = {
-    'X-Internal-Secret': SECRET!,
+    'X-Internal-Secret': SECRET,
     'Content-Type': 'application/json',
     'X-User-Id': session.user.id,
   }

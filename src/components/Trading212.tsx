@@ -44,6 +44,7 @@ const Trading212 = () => {
   const [positions, setPositions]   = useState<Position[]>([])
   const [cash, setCash]             = useState<Cash | null>(null)
   const [dataLoading, setDataLoading] = useState(false)
+  const [dataError, setDataError]   = useState('')
   const [showKey, setShowKey]       = useState(false)
 
   useEffect(() => {
@@ -72,14 +73,19 @@ const Trading212 = () => {
 
   const loadPortfolio = async () => {
     setDataLoading(true)
+    setDataError('')
     try {
       const res  = await fetch(`${BACKEND}/trading212/portfolio/${userId}`)
-      if (!res.ok) return
+      if (!res.ok) {
+        const msg = res.status === 504 ? 'Trading 212 timed out' : 'Could not refresh portfolio'
+        setDataError(msg)
+        return
+      }
       const data = await res.json()
       setPositions(data.positions ?? [])
       setCash(data.cash ?? null)
     } catch {
-      // network error or non-JSON body — leave state as-is
+      setDataError('Could not reach server')
     } finally {
       setDataLoading(false)
     }
@@ -187,6 +193,10 @@ const Trading212 = () => {
 
       ) : (
         <>
+          {dataError && (
+            <div className="text-[11px] text-[#f87171] mb-3">{dataError} — showing last known data</div>
+          )}
+
           {/* Summary cards */}
           {cash && (
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-5">
