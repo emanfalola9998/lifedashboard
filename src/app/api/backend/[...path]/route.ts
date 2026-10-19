@@ -45,7 +45,7 @@ async function handler(
   const url = `${BACKEND}/${encodedPath}${search}`
 
   const headers: Record<string, string> = {
-    'X-Internal-Secret': SECRET,
+    'X-Internal-Secret': SECRET!,
     'Content-Type': 'application/json',
     'X-User-Id': session.user.id,
   }
