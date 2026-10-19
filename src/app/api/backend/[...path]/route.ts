@@ -15,6 +15,22 @@ async function handler(
   }
 
   const { path } = await params
+
+  // Enforce that the userId in the path matches the logged-in user.
+  // Routes with a userId as last segment: dashboard/:id, trading212/*/:userId, calendar/*/:userId
+  // Exception: calendar/apple has no userId (it's a per-user ICS proxy, no id in path).
+  const userIdSegment = path[path.length - 1]
+  const routesWithUserId = ['dashboard', 'trading212', 'calendar']
+  const noUserIdPaths   = ['calendar/apple']
+  const pathStr = path.join('/')
+  if (
+    routesWithUserId.includes(path[0]) &&
+    !noUserIdPaths.some(p => pathStr.startsWith(p)) &&
+    userIdSegment !== session.user.id
+  ) {
+    return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+  }
+
   const url = `${BACKEND}/${path.join('/')}${req.nextUrl.search}`
 
   const headers: Record<string, string> = {
