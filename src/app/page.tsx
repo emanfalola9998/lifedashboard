@@ -14,6 +14,7 @@ import DailyIntention from '@/components/DailyIntention'
 import Reminders from '@/components/Reminders'
 import Budget from '@/components/Budget'
 import Trading212 from '@/components/Trading212'
+import { useDashboardSync } from '@/hooks/useDashboard'
 
 function getGreeting() {
   const h = new Date().getHours()
@@ -61,6 +62,8 @@ export default function Home() {
   const { data: session, status } = useSession()
   const [dateStr, setDateStr] = useState('')
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  // The one place the dashboard is loaded and auto-saved (components only read it via useDashboard)
+  useDashboardSync()
 
   useEffect(() => {
     setDateStr(new Date().toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }))
