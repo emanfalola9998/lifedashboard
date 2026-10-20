@@ -21,11 +21,11 @@ async function handler(
   // Exception: calendar/apple has no userId (it's a per-user ICS proxy, no id in path).
   const userIdSegment = path[path.length - 1]
   const routesWithUserId = ['dashboard', 'trading212', 'calendar']
-  const noUserIdPaths   = ['calendar/apple']
+  // const noUserIdPaths   = ['calendar/apple']
   const pathStr = path.join('/')
   if (
     routesWithUserId.includes(path[0]) &&
-    !noUserIdPaths.some(p => pathStr.startsWith(p)) &&
+    // !noUserIdPaths.some(p => pathStr.startsWith(p)) &&
     userIdSegment !== session.user.id
   ) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
@@ -34,12 +34,12 @@ async function handler(
   const encodedPath = path.map(encodeURIComponent).join('/')
 
   // Force userId on the OAuth redirect so an attacker cannot link Google Calendar to a victim's account
-  let search = req.nextUrl.search
-  if (pathStr === 'auth/google/redirect') {
-    const qs = new URLSearchParams(req.nextUrl.searchParams)
-    qs.set('userId', session.user.id)
-    search = `?${qs.toString()}`
-  }
+  const search = req.nextUrl.search
+  // if (pathStr === 'auth/google/redirect') {
+  //   const qs = new URLSearchParams(req.nextUrl.searchParams)
+  //   qs.set('userId', session.user.id)
+  //   search = `?${qs.toString()}`
+  // }
 
   const url = `${BACKEND}/${encodedPath}${search}`
 
@@ -49,6 +49,15 @@ async function handler(
     'X-Internal-Secret': SECRET,
     'Content-Type': 'application/json',
     'X-User-Id': session.user.id,
+  }
+
+  // Versioned saves: pass the client's preconditions through (only on writes — on a GET the
+  // browser may add If-None-Match itself for caching, which the backend doesn't handle)
+  if (req.method !== 'GET') {
+    for (const name of ['If-Match', 'If-None-Match']) {
+      const value = req.headers.get(name)
+      if (value) headers[name] = value
+    }
   }
 
   const body =
@@ -61,12 +70,19 @@ async function handler(
     return NextResponse.redirect(upstream.headers.get('Location') ?? '/', upstream.status)
   }
 
-  const text = await upstream.text()
+  // 204/205/304 must not carry a body — the Response constructor throws if given one (even "")
+  const responseBody = [204, 205, 304].includes(upstream.status) ? null : await upstream.text()
 
-  return new NextResponse(text, {
-    status: upstream.status,
-    headers: { 'Content-Type': upstream.headers.get('Content-Type') ?? 'application/json' },
-  })
+  const responseHeaders: Record<string, string> = {
+    'Content-Type': upstream.headers.get('Content-Type') ?? 'application/json',
+  }
+  // ETag = dashboard version for the next save; Retry-After = how long to wait after a 429
+  for (const name of ['ETag', 'Retry-After']) {
+    const value = upstream.headers.get(name)
+    if (value) responseHeaders[name] = value
+  }
+
+  return new NextResponse(responseBody, { status: upstream.status, headers: responseHeaders })
 }
 
 export const GET    = handler

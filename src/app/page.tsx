@@ -11,8 +11,6 @@ import DashboardOverview from '@/components/DashboardOverview'
 import WeeklySchedule from '@/components/WeeklySchedule'
 import PomodoroTimer from '@/components/PomodoroTimer'
 import DailyIntention from '@/components/DailyIntention'
-import GoogleCalendar from '@/components/GoogleCalendar'
-import AppleCalendar from '@/components/AppleCalendar'
 import Reminders from '@/components/Reminders'
 import Budget from '@/components/Budget'
 import Trading212 from '@/components/Trading212'
@@ -126,13 +124,6 @@ export default function Home() {
               <CountdownTimer />
             </div>
             <Reminders />
-          </Section>
-
-          <Section label="Calendar" emoji="📆">
-            <div className="flex flex-col gap-3">
-              <GoogleCalendar />
-              <AppleCalendar />
-            </div>
           </Section>
 
           <Section label="Goals" emoji="🎯">
